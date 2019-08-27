@@ -30,13 +30,15 @@ Basiq Connect is a function which receives input object with following parameter
 
 ## Example Usage
 
-1. Install react and react-dom
-    npm install react
-    npm install react-dom
+- First you have to Install react and react-dom:
+    $ npm install react
+    $ npm install react-dom
 
-2.1 Calling Basiq Connect with provided token and userID
+Then you can call Basiq Connect with two possible ways to authenticate: You can provide connect link or you can provide access provide token and user id.
 
-Add the following code to your .js file.
+- Calling Basiq Connect with provided token and userID
+  Add the following code to your .js file:
+
 ```
 import BasiqConnect from 'basiq-connect';
 
@@ -50,9 +52,9 @@ BasiqConnect({
 });
 ```
 
-2.2. Calling Basiq Connect with provided connect link:
+- Calling Basiq Connect with provided connect link:
+Add the following code to your .js file:
 
-Add the following code to your .js file.
 ```
 import BasiqConnect from 'basiq-connect';
 
