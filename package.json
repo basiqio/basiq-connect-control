@@ -46,7 +46,6 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "webpack": "4.39.1",
-    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.0"
   },
   "peerDependencies": {
