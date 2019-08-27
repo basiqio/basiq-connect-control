@@ -62,7 +62,7 @@ BasiqConnect({
     containerId: DOM_CONTAINER_ID,
     connectLink: YOUR_CONNECT_LINK,
     upload: TRUE/FALSE,
-    connect: TRUE\FALSE,
+    connect: TRUE/FALSE,
     companyName: YOUR_COMPANY_NAME
 });
 
