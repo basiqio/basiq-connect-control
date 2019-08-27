@@ -13,6 +13,7 @@
 import { doGet, doPost } from "./genericHttpClient";
 
 const API_URL = "https://au-api.basiq.io";
+const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/"
 //const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
 
 let userToken = "";
@@ -38,11 +39,11 @@ export function setToken(id, token) {
 }
 
 export async function verifyAuthRequestId(authRequestId) {
-  return await doGet(`${API_URL}/client_auth/${authRequestId}`);
+  return await doGet(`${DASHBOARD_API_URL}/client_auth/${authRequestId}`);
 }
 
 export async function invokeSmsVerificationCode(authRequestId) {
-  return await doPost(`${API_URL}/client_auth/${authRequestId}`);
+  return await doPost(`${DASHBOARD_API_URL}/client_auth/${authRequestId}`);
 }
 
 export async function verifySmsCode(authRequestId, smsCode) {
@@ -55,7 +56,7 @@ export async function verifySmsCode(authRequestId, smsCode) {
     "sms-code": smsCode
   };
 
-  const response = await doPost(`${API_URL}/client_auth/${authRequestId}/token`, null, body, headers);
+  const response = await doPost(`${DASHBOARD_API_URL}/client_auth/${authRequestId}/token`, null, body, headers);
 
   if (response.ok && response.status === 200 && response.payload) {
     userToken = response.payload.access_token;
