@@ -1,0 +1,42 @@
+.iu-title {
+  font-size: 20px;
+  color: #343434;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.iu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 580px;
+  width: 450px;
+  margin-top: 30px;
+}
+
+@media (max-height: 600px), (max-width: 450px) {
+  .iu-container {
+    align-self: stretch;
+  }
+}
+
+.iu-content-row {
+  display: flex;
+  flex-grow: 1;
+  min-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-height: 601px) and (min-width: 451px) {
+  .iu-content-row {
+    padding: 20px 40px 20px 40px;
+  }
+}
+
+@media (max-height: 600px), (max-width: 450px) {
+  .iu-content-row {
+    padding: 10px 20px 10px 20px;
+  }
+}

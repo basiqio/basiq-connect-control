@@ -1,0 +1,45 @@
+.cr-title {
+  font-size: 24px;
+  color: #343434;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.cr-text {
+  margin: 20px;
+  font-weight: 500;
+}
+
+.cr-result-container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
+  flex-grow: 1;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#cr-continue-button {
+  margin: 0 10px 10px 10px;
+}
+
+.cr-back-icon {
+  color: #0c7ff1;
+  cursor: pointer;
+  font-size: 50px;
+  position: relative;
+  line-height: 0px;
+  top: 5px;
+  margin-right: 6px;
+}
+
+.cr-footnote-bottom {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

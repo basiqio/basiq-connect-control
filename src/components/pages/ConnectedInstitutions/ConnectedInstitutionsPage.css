@@ -1,0 +1,99 @@
+.cdi-title {
+  font-size: 24px;
+  color: #343434;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.cdi-subtitle {
+  margin: 20px;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+
+.cdi-footnote-bottom {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cdi-footnote-text {
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size:15px;
+  color: #717171;
+  text-align: center;
+}
+
+.cdi-footnote-icon {
+  width: 18px;
+  margin: 0px 10px 0px 0px;
+  position: relative;
+  top: 2px;
+  opacity: 0.4;
+}
+
+.cdi-text-button {
+  text-align: center;
+  margin-top: 15px;
+  color: #007bff;
+}
+
+#cdi-show-bank-connect-button {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#cdi-show-bank-connect-button:hover {
+  text-decoration: underline;
+}
+
+.cdi-institution-list {
+  margin: 30px 20px 0 20px;
+}
+
+@media (min-height: 601px) and (min-width: 451px) {
+  .cdi-institution-list {
+    height: 25%;
+    overflow-y:auto;
+    flex:1 0 1px;
+  }
+}
+
+.cdi-institution-list-item{
+  border-top: 2px solid #dedede;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cdi-institution-list-item:last-child{
+  border-top: 2px solid #dedede;
+  border-bottom: 2px solid #dedede;
+  padding: 10px;
+}
+
+.cdi-page-content {
+  display:flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@media (min-height: 601px) and (min-width: 451px) {
+  .cdi-page-content {
+    flex: 1 0 1px;
+  }
+}
+
+.cdi-centered-bold-text {
+  font-weight: 500;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#cdi-inst-list-button {
+  margin: 0px 10px 10px 10px;
+}

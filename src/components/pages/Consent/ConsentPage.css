@@ -1,0 +1,48 @@
+.cp-ul {
+  list-style-position: inside;
+  padding-left: 0px;
+  line-height: 1.5;
+  list-style-type: disc;
+}
+
+.con-title {
+  font-size: 24px;
+  color: #343434;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.con-subtitle {
+  margin: 20px;
+  margin-bottom: 0px;
+}
+
+.con-data-bullets-title {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.con-footnote-bottom {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.con-button-row {
+  display: flex;
+}
+
+#con-deny-button {
+  width: 100%;
+  padding: 15px 9px;
+  margin: 10px 5px 10px 10px;
+}
+
+#con-consent-button {
+  width: 100%;
+  padding: 15px 9px;
+  margin: 10px 10px 10px 5px;
+}

@@ -1,0 +1,39 @@
+.main-button {
+    background-color: #0c7ff1;
+    color: white;
+    padding: 15px 32px;
+    outline: 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 0;
+  
+  }
+  
+.main-button-disabled{
+    pointer-events: none;
+    opacity: 0.5;
+    background: gray;
+}
+  
+.main-button:hover {
+    background-color: #244ba8;
+}
+  
+.main-button.half{
+    padding: 15px 9px;
+    margin: 10px;
+}
+
+
+.main-button-force-hide {
+  display: none !important;
+}
+
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

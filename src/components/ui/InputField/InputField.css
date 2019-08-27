@@ -1,0 +1,47 @@
+.inputField {
+  width: 100%;
+  font-family: "Barlow";
+  font-size: 16px;
+  color: #666666;
+  border-color: #cbcbcb;
+  border-width: 1px;
+  border-radius: 10px;
+  height: 38px;
+  margin-bottom: 10px;
+  border-style: solid;
+  outline: 0;
+  text-align: left;
+  text-indent: 10px;
+}
+
+.inputField::placeholder {
+  color: #cbcbcb;
+}
+
+.warning-label {
+  color: #e3843c;
+  font-size: 13px;
+  letter-spacing: 1px;
+  user-select: none;
+  opacity: 0.99;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.error-label {
+  color: #fe4a49;
+  font-size: 11px;
+  letter-spacing: 1px;
+  user-select: none;
+  opacity: 0.99;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.hide-error-label {
+  display: none !important;
+}
+
+.show-error-label {
+  display: block;
+}

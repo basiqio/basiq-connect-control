@@ -1,0 +1,24 @@
+.vm-title {
+  font-size: 24px;
+  color: #343434;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.vm-subtitle {
+  margin: 20px;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+
+.vm-footnote-bottom {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#vm-sms-code-button {
+  margin: 10px;
+}

@@ -1,0 +1,72 @@
+.us-statements-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.us-statements-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.us-upload-stat-method-select-title {
+  font-size: 24px;
+  color: #343434;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.us-upload-stat-upload-container {
+  box-sizing: border-box;
+  margin: 30px;
+  align-self: stretch;
+}
+
+.us-upload-stat-small-upload-container {
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.us-footnote-bottom {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.us-upload-stat-header {
+  display: flex;
+  flex-direction: row;
+}
+
+#us-upload-bank-logo {
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.us-upload-bank-logo-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.us-back-icon {
+  color: #0c7ff1;
+  cursor: pointer;
+  font-size: 50px;
+  position: relative;
+  line-height: 0px;
+  top: 5px;
+  margin-right: 6px;
+}
+
+#us-continue-button, #us-upload-button {
+  margin: 0 10px 10px 10px;
+}

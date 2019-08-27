@@ -1,0 +1,71 @@
+.ci-title {
+  font-size: 24px;
+  color: #343434;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.ci-search {
+  min-height: 30px;
+  border: none;
+  border-radius: 7px;
+  background-image: none;
+  background-color: #ebebeb;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 15px;
+  margin-top: 15px;
+  margin-left: 12px;
+  margin-right: 12px;
+  color: #5e5e5e;
+  font-weight: 500;
+}
+
+.ci-search::placeholder {
+  color: #979797;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.ci-list {
+  margin-left: 12px;
+  margin-right: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  overflow-y: scroll;
+}
+
+@media (min-height: 601px) and (min-width: 451px) {
+  .ci-list {
+    flex: 1 0 1px;
+  }
+}
+
+.ci-upper-buffer {
+  width: 100%;
+  height: 40px;
+}
+
+.ci-lower-buffer {
+  width: 100%;
+  height: 10px;
+}
+
+.ci-back-icon {
+  color: #0c7ff1;
+  cursor: pointer;
+  font-size: 50px;
+  position: relative;
+  line-height: 0px;
+  top: 5px;
+  margin-right: 6px;
+}

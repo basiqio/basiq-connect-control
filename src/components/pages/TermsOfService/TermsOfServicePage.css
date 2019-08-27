@@ -1,0 +1,77 @@
+.te-link {
+  cursor: pointer;
+  font-weight: 500;
+  vertical-align: -webkit-baseline-middle;
+}
+
+.te-ul {
+  list-style-position: inside;
+  padding-left: 0px;
+  line-height: 1.5;
+}
+
+.te-title {
+  font-size: 24px;
+  color: #343434;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.te-subtitle {
+  margin: 20px;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+
+.te-page-content {
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.te-footnote-bottom {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.te-footnote-text {
+  margin: 20px 40px;
+  text-align: center;
+  font-size: 15px;
+  color: #717171;
+}
+
+.te-footnote-text > a {
+  vertical-align: bottom;
+  color: #007bff;
+}
+
+.te-divider {
+  border-bottom: 1px solid #e7e8ea;
+  height: 0;
+}
+
+@media (max-height: 600px), (max-width: 450px) {
+  .te-divider {
+    margin: 30px 20px 30px 20px;
+  }
+}
+
+@media (min-height: 601px) and (min-width: 451px) {
+  .te-divider {
+    margin: 40px 100px 40px 100px;
+  }
+}
+
+#te-continue-button {
+  margin: 0 10px 10px 10px;
+}

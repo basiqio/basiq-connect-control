@@ -1,0 +1,23 @@
+.su-title{
+  margin-top: 40px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 200;
+}
+
+.su-icon-position {
+  margin: auto;
+  padding: 10px;
+}
+
+.su-icon {
+  width: 90px;
+  height: auto;
+  margin: auto;
+}
+
+.su-message {
+  text-align: center;
+  margin: 20px 60px 60px 60px;
+  font-size: 17px;
+}
