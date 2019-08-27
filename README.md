@@ -7,25 +7,26 @@ $ npm install basiq-connect
 Basiq Connect is a function which receives input object with following parameters:
 
 1. containerId
-  id of dom element in which basiq connect will be rendered
+  - ID of DOM element in which basiq connect will be rendered
   Type: String
 2. token 
-  authentication token
+  - authentication token
   Type: String
 3. userID
-  id of the user
+  - ID of the user
   Type: String
 4. connectLink
-  Basiq Connect link
+  - Basiq Connect link
   Type: String
 5. upload
-  True if uploading statements should be enabled
+  - True if uploading statements should be enabled
   Type: Boolean 
 6. connect
-  True if connecting to bank with credentials should be enabled
+  - True if connecting to bank with credentials should be enabled
   Type: Boolean 
 7. companyName
-  Name of the company(bank)
+  - Name of the company(bank)
+  Type: String
 
 ## Example Usage
 
@@ -33,7 +34,7 @@ Basiq Connect is a function which receives input object with following parameter
     npm install react
     npm install react-dom
 
-2. Calling Basiq Connect with provided token and userID
+2.1 Calling Basiq Connect with provided token and userID
 
 Add the following code to your .js file.
 ```
@@ -49,7 +50,7 @@ BasiqConnect({
 });
 ```
 
-3. Calling Basiq Connect with provided connect link:
+2.2. Calling Basiq Connect with provided connect link:
 
 Add the following code to your .js file.
 ```
