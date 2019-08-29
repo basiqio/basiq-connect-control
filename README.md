@@ -2,7 +2,7 @@ Basiq Connect is a javascript library written in React, which allows applicants 
 
 ## Requirements
 
-Basiq Connect requires installing of react and react-dom, starting from version 16.9.0:
+Basiq Connect requires installation of react and react-dom. Ensure that react and react-dom are at least v16.9.0:
 
 $ npm install react
 
@@ -17,8 +17,8 @@ $ npm install basiq-connect
 Basiq Connect is a function which receives configuration as an input object with following parameters:
 
 * **containerId**
-ID of the DOM element in which Basiq Connect will be rendered
-Type: String
+  - ID of the DOM element in which Basiq Connect will be rendered
+  - Type: String
 * **token**
   - authentication token
   - Type: String
@@ -41,7 +41,7 @@ Type: String
 
 ## How to use it
 
-Basiq Connect requires authentication. Authentication can be done through providing connect link or access token and user id.
+Basiq Connect requires authentication. Authentication can be done by providing connect link or access token and user id.
 
 - Calling Basiq Connect with provided token and userID
   Add the following code to your .js file:
