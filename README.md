@@ -1,6 +1,6 @@
 Basiq Connect is a javascript library written in React, which allows applicants to securely connect to their bank so lenders can generate an Affordability Report.
 
-##Requirements
+## Requirements
 
 Basiq Connect requires installing of react and react-dom, starting from version 16.9.0:
 
@@ -12,7 +12,7 @@ $ npm install react-dom
 
 $ npm install basiq-connect
 
-##Configuration
+## Configuration
 
 Basiq Connect is a function which receives configuration as an input object with following parameters:
 
