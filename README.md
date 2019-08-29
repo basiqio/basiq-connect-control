@@ -21,23 +21,23 @@ ID of the DOM element in which Basiq Connect will be rendered
 Type: String
 * **token**
   - authentication token
-  Type: String
+  - Type: String
 * **userID**
   - ID of the user
-  Type: String
+  - Type: String
 * **connectLinkID**
   - ID part of Basiq Connect link
-  Type: String
-  Example: If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a  - ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
+  - Type: String
+  - Example: If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a  - ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
 * **upload**
   - True if uploading statements should be enabled
-  Type: Boolean
+  - Type: Boolean
 * **connect**
   - True if connecting to bank with credentials should be enabled
-  Type: Boolean 
+  - Type: Boolean 
 * **companyName**
   - Name of the company(bank)
-  Type: String
+  - Type: String
 
 ## How to use it
 
