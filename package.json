@@ -1,6 +1,6 @@
 {
   "name": "basiq-connect",
-  "version": "0.9.9",
+  "version": "0.10.3",
   "main": "dist/main.js",
   "files": [
     "dist/*"
@@ -9,7 +9,11 @@
     "core-js": "^3.2.0",
     "font-awesome": "^4.7.0",
     "lato-font": "^3.0.0",
-    "url-loader": "^2.1.0"
+    "url-loader": "^2.1.0",
+    "react-app-polyfill": "^1.0.1",
+    "react-redux": "^7.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,24 +42,13 @@
     "image-webpack-loader": "^5.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-app-polyfill": "^1.0.1",
-    "react-device-detect": "^1.6.2",
-    "react-redux": "^7.0.1",
-    "react-responsive": "^6.1.1",
     "react-scripts": "^3.1.0",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
     "webpack": "4.39.1",
-    "webpack-cli": "^3.3.0"
+    "webpack-cli": "^3.3.0",
+    "webpack-bundle-analyzer": "^3.4.1"
   },
   "peerDependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-app-polyfill": "^1.0.1",
-    "react-device-detect": "^1.6.2",
-    "react-redux": "^7.0.1",
-    "react-responsive": "^6.1.1",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "react-dom": "^16.9.0"
   }
 }

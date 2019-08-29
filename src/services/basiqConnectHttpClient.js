@@ -39,11 +39,11 @@ export function setToken(id, token) {
 }
 
 export async function verifyAuthRequestId(authRequestId) {
-  return await doGet(`${DASHBOARD_API_URL}/client_auth/${authRequestId}`);
+  return await doGet(`${DASHBOARD_API_URL}client_auth/${authRequestId}`);
 }
 
 export async function invokeSmsVerificationCode(authRequestId) {
-  return await doPost(`${DASHBOARD_API_URL}/client_auth/${authRequestId}`);
+  return await doPost(`${DASHBOARD_API_URL}client_auth/${authRequestId}`);
 }
 
 export async function verifySmsCode(authRequestId, smsCode) {
@@ -56,7 +56,7 @@ export async function verifySmsCode(authRequestId, smsCode) {
     "sms-code": smsCode
   };
 
-  const response = await doPost(`${DASHBOARD_API_URL}/client_auth/${authRequestId}/token`, null, body, headers);
+  const response = await doPost(`${DASHBOARD_API_URL}client_auth/${authRequestId}/token`, null, body, headers);
 
   if (response.ok && response.status === 200 && response.payload) {
     userToken = response.payload.access_token;

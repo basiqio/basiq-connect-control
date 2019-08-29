@@ -1,4 +1,5 @@
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   resolve: {
@@ -12,10 +13,9 @@ module.exports = {
     filename: 'main.js',
     library: 'BasiqConnect',
     libraryTarget: 'umd',
-    publicPath: '/dist/', 
+    publicPath: '/dist/',
     umdNamedDefine: true
   },
-  // mode: "development",
   module: {
     rules: [
       {
