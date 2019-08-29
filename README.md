@@ -16,25 +16,26 @@ $ npm install basiq-connect
 
 Basiq Connect is a function which receives configuration as an input object with following parameters:
 
-1. containerId
-  - ID of the DOM element in which Basiq Connect will be rendered
-  Type: String
-2. token 
+* **containerId**
+ID of the DOM element in which Basiq Connect will be rendered
+Type: String
+* **token**
   - authentication token
   Type: String
-3. userID
+* **userID**
   - ID of the user
   Type: String
-4. connectLinkID
+* **connectLinkID**
   - ID part of Basiq Connect link
   Type: String
-5. upload
+  Example: If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a  - ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
+* **upload**
   - True if uploading statements should be enabled
-  Type: Boolean 
-6. connect
+  Type: Boolean
+* **connect**
   - True if connecting to bank with credentials should be enabled
   Type: Boolean 
-7. companyName
+* **companyName**
   - Name of the company(bank)
   Type: String
 
@@ -73,8 +74,6 @@ BasiqConnect({
 });
 
 ```
-
-* If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
 
 
 
