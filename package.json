@@ -1,6 +1,6 @@
 {
   "name": "basiq-connect",
-  "version": "0.10.3",
+  "version": "0.10.6",
   "main": "dist/main.js",
   "files": [
     "dist/*"
