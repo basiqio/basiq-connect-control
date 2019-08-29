@@ -1,13 +1,22 @@
 Basiq Connect is a javascript library written in React, which allows applicants to securely connect to their bank so lenders can generate an Affordability Report.
 
-## Instalation
+##Requirements
+
+Basiq Connect requires installing of react and react-dom, starting from version 16.9.0:
+
+$ npm install react
+$ npm install react-dom
+
+## Installation
 
 $ npm install basiq-connect
 
-Basiq Connect is a function which receives input object with following parameters:
+##Configuration
+
+Basiq Connect is a function which receives configuration as an input object with following parameters:
 
 1. containerId
-  - ID of DOM element in which basiq connect will be rendered
+  - ID of the DOM element in which Basiq Connect will be rendered
   Type: String
 2. token 
   - authentication token
@@ -15,8 +24,8 @@ Basiq Connect is a function which receives input object with following parameter
 3. userID
   - ID of the user
   Type: String
-4. connectLink
-  - Basiq Connect link
+4. connectLinkID
+  - ID part of Basiq Connect link
   Type: String
 5. upload
   - True if uploading statements should be enabled
@@ -28,13 +37,9 @@ Basiq Connect is a function which receives input object with following parameter
   - Name of the company(bank)
   Type: String
 
-## Example Usage
+## How to use it
 
-- First you have to Install react and react-dom:
-    $ npm install react
-    $ npm install react-dom
-
-Then you can call Basiq Connect with two possible ways to authenticate: You can provide connect link or you can provide access provide token and user id.
+Basiq Connect requires authentication. Authentication can be done through providing connect link or access token and user id.
 
 - Calling Basiq Connect with provided token and userID
   Add the following code to your .js file:
@@ -62,11 +67,13 @@ BasiqConnect({
     containerId: DOM_CONTAINER_ID,
     connectLink: YOUR_CONNECT_LINK,
     upload: TRUE/FALSE,
-    connect: TRUE/FALSE,
+    connect: TRUE\FALSE,
     companyName: YOUR_COMPANY_NAME
 });
 
 ```
 
-### 
+* If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
+
+
 
