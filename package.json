@@ -12,7 +12,8 @@
     "url-loader": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-test": "npm run build && cd test && npm install && react-scripts start",
+    "build-test": "npm run build && cd test && npm install",
     "build": "webpack --config webpack.config.js",
     "lint": "eslint 'src/**/*.js'",
     "prepublishOnly": "webpack --config webpack.config.js"
