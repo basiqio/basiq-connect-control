@@ -22,13 +22,14 @@ class InstitutionThumbnail extends React.Component {
   render() {
     return (
       <div className="institution-thumb-cont"
+        style={{marginBottom: this.props.allwaysShowName ? "20px" : "0px"}}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
         onClick={() => this.props.onInstitutionSelected(this.props.institution)}>
         <img className="institution-thumb-img"
           src={this.props.institution.logo.links.square}
           alt={this.props.institution.shortName} />
-        {this.state.showName ?
+        {this.props.allwaysShowName || this.state.showName ?
           <span className="institution-thumb-name">{this.props.institution.shortName}</span> : null}
       </div>
     );
