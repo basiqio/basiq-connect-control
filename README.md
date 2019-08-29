@@ -5,6 +5,7 @@ Basiq Connect is a javascript library written in React, which allows applicants 
 Basiq Connect requires installing of react and react-dom, starting from version 16.9.0:
 
 $ npm install react
+
 $ npm install react-dom
 
 ## Installation
