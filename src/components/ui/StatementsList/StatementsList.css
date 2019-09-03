@@ -124,7 +124,9 @@
   letter-spacing: 1px;
   user-select: none;
   opacity: 0.99;
-  margin-left: 20px;
+  margin-left: 40px;
+  margin-top: -10px;
+  margin-bottom: 5px;
 }
 
 .sl-show-error-label {
@@ -137,7 +139,6 @@
   margin: 5px;
   padding: 5px;
 }
-
 
 .sl-pdf-icon {
   width: 20px;

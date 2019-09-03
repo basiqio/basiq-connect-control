@@ -15,7 +15,7 @@ export const StatementStatus = {
   UPLOADING: "UPLOADING",
   SUCCESS: "SUCCESS",
   FAILURE: "FAILURE"
-}
+};
 
 export const initialState = {
   currentPage: null,

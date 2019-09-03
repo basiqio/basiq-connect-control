@@ -71,12 +71,12 @@ export const fileRemoved = value => ({ type: actionTypes.FILE_REMOVED, value });
 
 export const fileAdded = value => ({ type: actionTypes.FILE_ADDED, value });
 
-export const authorizationFailed = () => ({type: actionTypes.AUTHORIZATION_FAILED})
+export const authorizationFailed = () => ({type: actionTypes.AUTHORIZATION_FAILED});
 
 export const connectMethodSelected = method => ({
-    type: actionTypes.INPUT_METHOD_SELECTED,
-    value: { method, page: pages.SelectInstitutionPage }
-  });
+  type: actionTypes.INPUT_METHOD_SELECTED,
+  value: { method, page: pages.SelectInstitutionPage }
+});
 
 export const connectToBank = (
   selectedInstitution,
@@ -149,21 +149,23 @@ export const validateAuthRequestId = ({connectLink, connect, upload, partnerName
     const authRequestResponse = await apiService.verifyAuthRequestId(connectLink);
 
     if (authRequestResponse.ok) {
-      let connectValue, uploadValue, partnerNameValue;
 
-      connectValue = connect !== undefined ? connect : authRequestResponse.payload.partner.connectSupported;
-      uploadValue = upload !== undefined ? upload : authRequestResponse.payload.partner.uploadSupported;
+      let connectValue = connect !== undefined ? connect : authRequestResponse.payload.partner.connectSupported;
+      let uploadValue = upload !== undefined ? upload : authRequestResponse.payload.partner.uploadSupported;
     
       if(!connectValue && !uploadValue){
         connectValue = true;
         uploadValue = false;
       }
 
+      let partnerNameValue = "";
+
       if(partnerName) {
         partnerNameValue = partnerName;
-      }else {
+      } else {
         partnerNameValue = authRequestResponse.payload.partner.name;
       }
+
       dispatch(
         authRequestIdValidationSucceded({
           partnerName: partnerNameValue,
@@ -189,10 +191,9 @@ export const validateToken = ({token, userId, connect, upload, partnerName}) => 
   const userRequestResponse = await apiService.getUser(token, userId);
   if(userRequestResponse.ok) {
     apiService.setToken(userId, token);
-    let connectValue, uploadValue;
 
-    connectValue = connect !== undefined ? connect : false;
-    uploadValue = upload !== undefined ? upload : false;
+    let connectValue = connect !== undefined ? connect : false;
+    let uploadValue = upload !== undefined ? upload : false;
 
     if(!connectValue && !uploadValue){
       connectValue = true;
@@ -206,11 +207,12 @@ export const validateToken = ({token, userId, connect, upload, partnerName}) => 
       upload: uploadValue,
       partnerName
     }));
-  }else{
-    console.error("Provided token and user id are not valid")
+  } else {
+    // eslint-disable-next-line no-console
+    console.error("BASIC CONNECT CONTROL ERROR: Provided token and user id are not valid.");
     return dispatch(tokenValidationFailed({ value: errorMessage }));
   }
-}
+};
 
 export const showBankConnect = ({userId, accessToken, connectSupported, uploadSupported}) => dispatch => {
   if (connectSupported && uploadSupported) {

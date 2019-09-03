@@ -11,22 +11,26 @@ import ViewContainer from "./components/ViewContainer";
 
 class App extends React.Component {
   componentDidMount() {
-    if(this.props.token !== undefined && this.props.token !== "" && this.props.userID !== undefined && this.props.userID !== ""){
-      this.props.validateToken({token: this.props.token, userId: this.props.userID, connect: this.props.connect, upload: this.props.upload, partnerName: this.props.companyName});
+    if(this.props.token !== undefined &&
+       this.props.token !== "" &&
+       this.props.userID !== undefined &&
+       this.props.userID !== "") {
+      this.props.validateToken({token: this.props.token, userId: this.props.userID,
+        connect: this.props.connect, upload: this.props.upload, partnerName: this.props.companyName});
       this.props.fetchInstitutions();
-    }
-    else if(this.props.connectLink !== undefined && this.props.connectLink != ""){
-      this.props.validateAuthRequestId({connectLink: this.props.connectLink, connect: this.props.connect, upload: this.props.upload, partnerName: this.props.companyName});
+    } else if(this.props.connectLink !== undefined && this.props.connectLink !== ""){
+      this.props.validateAuthRequestId({connectLink: this.props.connectLink,
+        connect: this.props.connect, upload: this.props.upload, partnerName: this.props.companyName});
       this.props.fetchInstitutions();
-    }
-    else {
-      console.error("You have to provide authentication id or user id and access token");
+    } else {
+      // eslint-disable-next-line no-console
+      console.error("BASIQ CONNECT CONTROL ERROR: You have to provide authentication id or user id and access token.");
       this.props.authorizationFailed();
     }
   }
 
   render() {
-    const { currentPage, navigateToActionCreator, token } = this.props;
+    const { currentPage, navigateToActionCreator } = this.props;
     if (!currentPage) {
       return null;
     }

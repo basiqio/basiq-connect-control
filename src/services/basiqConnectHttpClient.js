@@ -13,7 +13,7 @@
 import { doGet, doPost } from "./genericHttpClient";
 
 const API_URL = "https://au-api.basiq.io";
-const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/"
+const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
 //const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
 
 let userToken = "";
@@ -72,12 +72,12 @@ export async function verifySmsCode(authRequestId, smsCode) {
   return response;
 }
 
-export async function getUser(token, userId) {
+export async function getUser(token, id) {
   const headers = {
     Authorization: `Bearer ${token}`,
     Accept: "application/json"
   };
-  return await doGet(`${API_URL}/users/${userId}`, null, headers);
+  return await doGet(`${API_URL}/users/${id}`, null, headers);
 }
 
 export async function getInstitutions() {

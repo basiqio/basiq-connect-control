@@ -20,7 +20,7 @@ const StatementsList = ({ statements, fileRemoved }) => {
           <div className="sl-statement-container">
             <div className="sl-statement">
               <img className="sl-pdf-icon" src={pdfIcon} alt="pdf" />
-              {statement.filename.length > 25 ? statement.filename.substr(0, 25).trim() + "..." : statement.filename}
+              {statement.filename.length > 25 ? `${statement.filename.substr(0, 25).trim()}...` : statement.filename}
               {statement.status === StatementStatus.UPLOADING ? (
                 <div className="sl-upload-status-icon">
                   <div className="sl-loading-spinner sl-blue-spinner" style={{ marginLeft: "10px" }} />

@@ -1,26 +1,21 @@
 {
-  "name": "basiq-connect",
-  "version": "0.10.3",
+  "name": "basiq-connect-bn",
+  "version": "0.10.7",
   "main": "dist/main.js",
   "files": [
     "dist/*"
   ],
   "dependencies": {
-    "core-js": "^3.2.0",
-    "font-awesome": "^4.7.0",
-    "lato-font": "^3.0.0",
-    "url-loader": "^2.1.0",
-    "react-app-polyfill": "^1.0.1",
     "react-redux": "^7.0.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start-test": "npm run build && cd test && npm install && react-scripts start",
-    "build-test": "npm run build && cd test && npm install",
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack -d --config webpack.config.js",
+    "build-prod": "webpack -p --config webpack.config.js",
     "lint": "eslint 'src/**/*.js'",
-    "prepublishOnly": "webpack --config webpack.config.js"
+    "prepublishOnly": "npm run build-prod"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,10 +41,13 @@
     "react-scripts": "^3.1.0",
     "webpack": "4.39.1",
     "webpack-cli": "^3.3.0",
-    "webpack-bundle-analyzer": "^3.4.1"
+    "webpack-bundle-analyzer": "^3.4.1",
+    "url-loader": "^2.1.0"
   },
   "peerDependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-app-polyfill": "^1.0.2",
+    "core-js": "^3.2.0"
   }
 }
