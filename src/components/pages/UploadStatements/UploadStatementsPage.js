@@ -16,19 +16,25 @@ import { StatementStatus } from "../../../reducers/initialState";
 import "./UploadStatementsPage.css";
 
 const statementsUploaded = (statements) => {
-  return !statements.some(function(statement) {
-    return statement.status === StatementStatus.ADDED || statement.status === StatementStatus.UPLOADING;
-    }) &&
+  return (!statements.some(function(statement) {
+    return statement.status === StatementStatus.ADDED ||
+           statement.status === StatementStatus.UPLOADING;
+  }) &&
         statements.some(function(statement) {
           return statement.status === StatementStatus.SUCCESS;
-        });
-}
+        }));
+};
 
 const statementsInvalid = (statements) => {
+  if (statements.length === 0) {
+    return false;
+  }
+
   return statements.every(function(statement) {
-            return statement.status === StatementStatus.FAILURE || statement.status === StatementStatus.UNSUPPORTED;
-          });
-}
+    return statement.status === StatementStatus.FAILURE ||
+           statement.status === StatementStatus.UNSUPPORTED;
+  });
+};
 
 const UploadStatementsPage = ({
   statements,
@@ -57,7 +63,8 @@ const UploadStatementsPage = ({
       <div className="us-statements-content">
         <StatementsList statements={statements} fileRemoved={fileRemoved} />
         <div
-          className={statements.length === 0 ? "us-upload-stat-upload-container" : "us-upload-stat-small-upload-container"}
+          className={statements.length === 0 ?
+            "us-upload-stat-upload-container" : "us-upload-stat-small-upload-container"}
         >
           <Upload
             text="We support only official statements downloaded directly from your banking institution"

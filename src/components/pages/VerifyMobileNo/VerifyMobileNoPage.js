@@ -26,7 +26,7 @@ const VerifyMobileNoPage = ({ mobile, smsCode, smsCodeValid, resendSmsCodeVerifi
       changeSmsCode={smsCodeChangedActionCreator}
       verifySmsCodeExecute={verifySmsCode}
       authRequestId={authRequestId}
-      />
+    />
 
     <div className="vm-footnote-bottom">
       <MainButton id="vm-sms-code-button" onClick={() => verifySmsCode(authRequestId, smsCode.join(""))}

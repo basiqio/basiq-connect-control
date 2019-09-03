@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import spinner from "../../../assets/images/spinner-of-dots.svg";
+
 import "./MainButton.css";
 
 const MainButton = props => {
@@ -10,8 +13,8 @@ const MainButton = props => {
       onClick={props.disabled ? e => e.preventDefault() : props.onClick}
       style={props.style}
     >
-      <span className={props.loading ? "icon" : "main-button-force-hide"}>
-        <i className="fa fa-spinner fa-spin" />
+      <span className={props.loading ? "" : "main-button-force-hide"}>
+        <img src={spinner} className="main-button-spinner" alt="spinner" />
       </span>
       {props.text}
     </button>

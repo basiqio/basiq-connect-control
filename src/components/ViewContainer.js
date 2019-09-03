@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import BasiqLogo from "../assets/images/basiq.png";
 import redWarning from "../assets/images/redWarning.svg";
 import greenWarning from "../assets/images/greenWarning.svg";
 import ImagePreloader from "./ui/ImagePreloader";

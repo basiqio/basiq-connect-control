@@ -45,8 +45,9 @@
 }
 
 #us-upload-bank-logo {
-  width: 70px;
-  height: 70px;
+  width: 130px;
+  height: 30px;
+  margin-top: 20px;
   margin-right: 20px;
   margin-bottom: 10px;
 }
