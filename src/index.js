@@ -9,10 +9,10 @@ import "./styles/Layout.css";
 
 const BasiqConnect = (inputs) => {
   if(inputs && inputs.containerId !== null){
-    const { containerId, connectLink, token, userID, connect, upload, companyName } = inputs;
+    const { containerId, connectLinkID, token, userID, connect, upload, companyName } = inputs;
     ReactDOM.render(
       <Provider store={configureStore()}>
-        <App connectLink={connectLink} token={token} userID={userID}
+        <App connectLink={connectLinkID} token={token} userID={userID}
           connect={connect} upload={upload} companyName={companyName}/>
       </Provider>,
       document.getElementById(containerId));
