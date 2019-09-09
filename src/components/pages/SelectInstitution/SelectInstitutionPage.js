@@ -27,11 +27,14 @@ class SelectInstitutionPage extends React.Component {
   };
 
   render() {
-    const { navigateToActionCreator, institutionSelected, institutions, connectSupported, uploadSupported } = this.props;
+    const { navigateToActionCreator, institutionSelected,
+      institutions, connectSupported, uploadSupported } = this.props;
     return (
       <div className="page-container">
         <div className="ci-title">
-          <span className="ci-back-icon" onClick={() => connectSupported && uploadSupported ? navigateToActionCreator(pages.SelectMethodPage) : navigateToActionCreator(pages.ConnectInstitutionPage)}>‹</span>
+          <span className="ci-back-icon" onClick={() => connectSupported && uploadSupported ?
+            navigateToActionCreator(pages.SelectMethodPage) :
+            navigateToActionCreator(pages.ConnectInstitutionPage)}>‹</span>
           Select your bank
         </div>
         <input
@@ -55,6 +58,7 @@ class SelectInstitutionPage extends React.Component {
                   institution={institution}
                   key={`${institution.id}`}
                   onInstitutionSelected={i => institutionSelected(i)}
+                  allwaysShowName={this.state.searchString.length > 0}
                 />
               ))
             : null}

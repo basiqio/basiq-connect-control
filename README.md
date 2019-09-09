@@ -1,79 +1,111 @@
-Basiq Connect is a javascript library written in React, which allows applicants to securely connect to their bank so lenders can generate an Affordability Report.
+Basiq Connect Control is an UI control for web which allows applicants to securely connect to their banks so lenders can generate an affordability report. It is written in React but exposes interface in plain JavaScript.
 
 ## Requirements
 
-Basiq Connect requires installation of react and react-dom. Ensure that react and react-dom are at least v16.9.0:
+1. Install `react` and `react-dom`; ensure that react and react-dom are at least v16.9.0. You need to install these libraries even if you do **not** develop your web application using React (for example if you build an Angular app). 
 
-$ npm install react
+	```
+	$ npm install react
+	$ npm install react-dom
+	```
 
-$ npm install react-dom
+2. Optionally, install (and import) polyfill libraries (in particualar if you want your app to be supported in Internet Explorer) for example, `core-js` and `react-app-polyfill`:
 
-## Installation
+ 	```
+	$ npm install react-app-polyfill
+	$ npm install core-js
+	```
+	
+	and make proper imports on the top of your entry file, for example:
+	
+	```
+	import "react-app-polyfill/ie11";
+	import "core-js/stable";
+	import "regenerator-runtime/runtime";
+	```
 
-$ npm install basiq-connect
+	If you use Angular, have in mind that Angular app comes with `zone.js` polyfill; if you want to add any other polyfills you need to add 	them **before** `zone.js` is imported. For more information, view Angular documentation.
+	
+3. Install `basiq-connect-control`:
 
-## Configuration
+	```
+	$ npm install basiq-connect-control
+	```
+	
+	and import it where you need it:
+	
+	```
+	import BasiqConnect from "basiq-connect-control"
+	```
+	
+## Usage
 
-Basiq Connect is a function which receives configuration as an input object with following parameters:
+Basiq Connect Control exports single function (which we call BasiqConnect) which receives configuration as an input parameter. Once application calls the function, Basiq Connect Control is rendered in DOM object whose id is provided in input configuration.
 
-* **containerId**
-  - ID of the DOM element in which Basiq Connect will be rendered
+### Configuration
+
+Configuration object contains following parameters (note that not all parameters are required):
+
+* containerId
+  - ID of the DOM element in which Basiq Connect Control will be rendered; optimal size of host element is 600px x 450px
   - Type: String
-* **token**
-  - authentication token
+* token
+  - Authentication token; it is obtaining through [BasiqAPI](https://api.basiq.io/reference)
   - Type: String
-* **userID**
-  - ID of the user
+* userID
+  - User ID of the applicant; it is obtaining through [BasiqAPI](https://api.basiq.io/reference)
   - Type: String
-* **connectLinkID**
-  - ID part of Basiq Connect link
+* connectLinkID
+  - ID part of Basiq Connect link; it is obtained through [Basiq Dashboard](https://dashboard.basiq.io/)
   - Type: String
-  - Example: If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a  - ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
-* **upload**
+  - Example: If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a - ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
+* upload
   - True if uploading statements should be enabled
   - Type: Boolean
-* **connect**
+* connect
   - True if connecting to bank with credentials should be enabled
   - Type: Boolean 
-* **companyName**
-  - Name of the company(bank)
+* companyName
+  - Name of the company (bank) to be shown in the control; if not provided companyName defaults to name configured on [Basiq Dashboard](https://dashboard.basiq.io/)
   - Type: String
 
-## How to use it
 
-Basiq Connect requires authentication. Authentication can be done by providing connect link or access token and user id.
+### Authentication
 
-- Calling Basiq Connect with provided token and userID
-  Add the following code to your .js file:
 
-```
-import BasiqConnect from 'basiq-connect';
+Basiq Connect requires authentication. Authentication is done by providing either (1) connect link, or (2) both access token and user id of applicant. Connect link can be obtained from [Basiq Dashboard](https://dashboard.basiq.io/); authentication token and user id can be obtained from [BasiqAPI](https://api.basiq.io/reference).
 
-BasiqConnect({
-    containerId: DOM_CONTAINER_ID,
-    token: YOU_TOKEN,
-    userID: YOUR_USER_ID,
-    upload: TRUE/FALSE,
-    connect: TRUE\FALSE,
-    companyName: YOUR_COMPANY_NAME
-});
-```
+### Where to call `BasiqConnect`?
+
+If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere after host DOM element is loaded. If you use React to build you application, good place for calling `BasiqConnect` is in `componentDidMount` function; if you use Angular, good place would be in `ngOnInit` function.
+
+### Examples
+
+- Calling Basiq Connect with provided token and userID:
+
+	```
+	import BasiqConnect from "basiq-connect-control";
+	
+	BasiqConnect({
+	    containerId: DOM_CONTAINER_ID,
+	    token: YOU_TOKEN,
+	    userID: YOUR_USER_ID,
+	    upload: TRUE/FALSE,
+	    connect: TRUE/FALSE,
+	    companyName: YOUR_COMPANY_NAME
+	});
+	```
 
 - Calling Basiq Connect with provided connect link:
-Add the following code to your .js file:
 
-```
-import BasiqConnect from 'basiq-connect';
-
-BasiqConnect({
-    containerId: DOM_CONTAINER_ID,
-    connectLink: YOUR_CONNECT_LINK,
-    upload: TRUE/FALSE,
-    connect: TRUE\FALSE,
-    companyName: YOUR_COMPANY_NAME
-});
-
-```
-
-
-
+	```
+	import BasiqConnect from "basiq-connect";
+	
+	BasiqConnect({
+	    containerId: DOM_CONTAINER_ID,
+	    connectLinkID: YOUR_CONNECT_LINK,
+	    upload: TRUE/FALSE,
+	    connect: TRUE/FALSE,
+	    companyName: YOUR_COMPANY_NAME
+	});
+	```

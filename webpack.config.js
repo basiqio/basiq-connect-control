@@ -1,5 +1,4 @@
-const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require("path");
 
 module.exports = {
   resolve: {
@@ -9,11 +8,11 @@ module.exports = {
     main: "./src/index.js"
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
-    library: 'BasiqConnect',
-    libraryTarget: 'umd',
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
+    library: "BasiqConnect",
+    libraryTarget: "umd",
+    publicPath: "/dist/",
     umdNamedDefine: true
   },
   module: {
@@ -35,29 +34,29 @@ module.exports = {
           loader: "url-loader",
           options: {
             limit: 10000,
-            name: '[name].[ext]'
+            name: "[name].[ext]"
           }
         }
       },
       {
         test: /\.html$/,
         use: [
-          'html-loader'
+          "html-loader"
         ]
       },
       {
         test: /\.(ttf|eot|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
-        loader: 'url-loader'
+        loader: "url-loader"
       },
       {
         test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
-        loader: 'url-loader',
-        options: { limit: 10000, mimetype: 'application/font-woff2' }
+        loader: "url-loader",
+        options: { limit: 10000, mimetype: "application/font-woff2" }
       },
       {
         test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
-        loader: 'url-loader',
-        options: { limit: 10000, mimetype: 'application/font-woff' }
+        loader: "url-loader",
+        options: { limit: 10000, mimetype: "application/font-woff" }
       },
     ]
   },

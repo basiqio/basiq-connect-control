@@ -11,6 +11,7 @@ import MainButton from "../../ui/MainButton/MainButton";
 import BounceAnimation from "../../ui/SpinnerAnimation/SpinnerAnimation";
 
 import successImage from "../../../assets/images/tick.svg";
+import failureImage from "../../../assets/images/cancel-icon.svg";
 
 import "./ConnectResultPage.css";
 
@@ -26,7 +27,7 @@ const ConnectResultPage = ({ connectResult, bankConnectFinished, navigateToActio
     subtitle = "Your data has been successfully submitted.";
   } else if (connectResult === ConnectResult.FAILURE) {
     title = "Error";
-    illustration = "FAILURE";
+    illustration = <img style={{width: "96px"}} src={failureImage} alt="Failure"/>;
     subtitle = "Error connecting to bank.";
   }
 

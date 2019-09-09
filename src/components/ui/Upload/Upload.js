@@ -48,7 +48,7 @@ class Upload extends React.Component {
     filesSelector.setAttribute("accept", filetypes);
     filesSelector.addEventListener("click", e => {
       e.target.value = null;
-    })
+    });
     filesSelector.addEventListener("change", e => {
       e.stopPropagation();
       e.preventDefault();
@@ -60,7 +60,7 @@ class Upload extends React.Component {
           const fileId = Date.now();
           let extension = "";
           if(file.type === ""){
-            extension = file.name.split('.').pop();
+            extension = file.name.split(".").pop();
           }
           if (filetypes.includes(file.type) || extensions.includes(extension)) {
             if (file.size / 1048576 > 4.5) {
@@ -103,14 +103,14 @@ class Upload extends React.Component {
   handleDrop = e => {
     e.preventDefault();
     e.stopPropagation();
-    let { fileAdded, filetypes, extensions, institutionId, unsupportedFileDropped, largeFileDropped } = this.props;
+    const { fileAdded, filetypes, extensions, institutionId, unsupportedFileDropped, largeFileDropped } = this.props;
     this.setState({ dragging: false });
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       Array.from(e.dataTransfer.files).forEach(file => {
         const fileId = Date.now();
         let extension = "";
         if(file.type === ""){
-          extension = file.name.split('.').pop();
+          extension = file.name.split(".").pop();
         }
         if (filetypes.includes(file.type) || extensions.includes(extension)) {
           if (file.size / 1048576 > 4.5) {

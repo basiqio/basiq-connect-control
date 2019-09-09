@@ -8,6 +8,7 @@ class NumericCodeInputs extends React.Component {
   }
 
   componentDidMount() {
+    // eslint-disable-next-line no-unused-vars
     for (const x in this.refs) {
       this.refs[x].onkeydown = (e) =>
         this.handleKeyDownPress(e, this.refs[x], x);
