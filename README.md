@@ -55,7 +55,7 @@ Configuration object contains following parameters (note that not all parameters
 * userID
   - User ID of the applicant; it is obtaining through [BasiqAPI](https://api.basiq.io/reference)
   - Type: String
-* connectLinkID
+* connectLinkId
   - ID part of Basiq Connect link; it is obtained through [Basiq Dashboard](https://dashboard.basiq.io/)
   - Type: String
   - Example: If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a - ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
@@ -72,8 +72,7 @@ Configuration object contains following parameters (note that not all parameters
 
 ### Authentication
 
-
-Basiq Connect requires authentication. Authentication is done by providing either (1) connect link, or (2) both access token and user id of applicant. Connect link can be obtained from [Basiq Dashboard](https://dashboard.basiq.io/); authentication token and user id can be obtained from [BasiqAPI](https://api.basiq.io/reference).
+Basiq Connect Control requires authentication. Authentication is done by providing either (1) connect link, or (2) both access token and user id of applicant. Connect link can be obtained from [Basiq Dashboard](https://dashboard.basiq.io/); authentication token and user id can be obtained from [BasiqAPI](https://api.basiq.io/reference).
 
 ### Where to call `BasiqConnect`?
 
@@ -88,7 +87,7 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	
 	BasiqConnect({
 	    containerId: DOM_CONTAINER_ID,
-	    token: YOU_TOKEN,
+	    token: YOUR_TOKEN,
 	    userID: YOUR_USER_ID,
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
@@ -103,7 +102,7 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	
 	BasiqConnect({
 	    containerId: DOM_CONTAINER_ID,
-	    connectLinkID: YOUR_CONNECT_LINK,
+	    connectLinkId: YOUR_CONNECT_LINK,
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
 	    companyName: YOUR_COMPANY_NAME
