@@ -7,6 +7,9 @@ import App from "./App";
 
 import "./styles/Layout.css";
 
+// eslint-disable-next-line no-console
+console.log("Basiq Connect Control v1.0.3");
+
 const BasiqConnect = (inputs) => {
   if(inputs && inputs.containerId !== null){
     const { containerId, connectLinkId, token, userID, connect, upload, companyName } = inputs;
