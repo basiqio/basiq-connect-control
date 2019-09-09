@@ -29,13 +29,13 @@ Basiq Connect Control is an UI control for web which allows applicants to secure
 3. Install `basiq-connect-control`:
 
 	```
-	$ npm install basiq-connect-control
+	$ npm install @basiq/basiq-connect-control
 	```
 	
 	and import it where you need it:
 	
 	```
-	import BasiqConnect from "basiq-connect-control"
+	import BasiqConnect from "@basiq/basiq-connect-control"
 	```
 	
 ## Usage
@@ -84,7 +84,7 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 - Calling Basiq Connect with provided token and userID:
 
 	```
-	import BasiqConnect from "basiq-connect-control";
+	import BasiqConnect from "@basiq/basiq-connect-control";
 	
 	BasiqConnect({
 	    containerId: DOM_CONTAINER_ID,
@@ -99,7 +99,7 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 - Calling Basiq Connect with provided connect link:
 
 	```
-	import BasiqConnect from "basiq-connect";
+	import BasiqConnect from "@basiq/basiq-connect-control";
 	
 	BasiqConnect({
 	    containerId: DOM_CONTAINER_ID,
