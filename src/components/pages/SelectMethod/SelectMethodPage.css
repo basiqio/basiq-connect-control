@@ -143,11 +143,14 @@
 
 .sm-img-container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   border-right: 1px solid #cdcdcd;
 }
 
 .sm-img-container img {
+  display: table;
   margin-right: 20px;
 }
 

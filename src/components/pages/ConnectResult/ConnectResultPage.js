@@ -19,7 +19,7 @@ import "./ConnectResultPage.css";
 const ConnectResultPage = ({ connectResult, bankConnectFinished, navigateToActionCreator }) => {
   let title = "Connecting...";
   let illustration = <BounceAnimation />;
-  let subtitle = "Retriving data...";
+  let subtitle = "Retrieving data...";
 
   if (connectResult === ConnectResult.SUCCESS) {
     title = "Success";
@@ -49,7 +49,7 @@ const ConnectResultPage = ({ connectResult, bankConnectFinished, navigateToActio
       <div className="cr-footnote-bottom">
         <MainButton
           id="cr-continue-button"
-          disabled={connectResult.length === 0}
+          disabled={connectResult === ConnectResult.PENDING}
           text="Continue"
           onClick={() => bankConnectFinished()}
         />

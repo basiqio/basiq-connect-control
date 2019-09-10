@@ -6,7 +6,8 @@ export const ConnectMethod = {
 
 export const ConnectResult = {
   SUCCESS: "SUCCESS",
-  FAILURE: "FAILURE"
+  FAILURE: "FAILURE",
+  PENDING: "PENDING"
 };
 
 export const StatementStatus = {
@@ -35,7 +36,7 @@ export const initialState = {
   institutions: [],
   connectMethod: ConnectMethod.UNKNOWN,
   selectedInstitution: null,
-  connectResult: "",
+  connectResult: ConnectResult.PENDING,
   loginIdError: "",
   passwordError: "",
   securityCodeError: "",

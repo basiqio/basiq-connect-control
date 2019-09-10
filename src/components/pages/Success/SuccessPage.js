@@ -7,7 +7,7 @@ import SuccessIcon from "../../../assets/images/Mark_Circle-512.png";
 import "./SuccessPage.css";
 
 const ThankYouPage = ({ partnerName }) => (
-  <div className="page-container">
+  <div className="page-container su-container">
     <div className="su-title">Thank You</div>
     <div className="su-icon-position">
       <img className="su-icon" src={SuccessIcon} alt="success icon" />

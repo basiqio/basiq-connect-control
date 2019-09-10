@@ -154,6 +154,7 @@ export default (state = initialState, action) => {
       newState.error = "";
       break;
     case actionTypes.BANK_CONNECT_STARTED:
+      newState.connectResult = ConnectResult.PENDING;
       newState.currentPage = pages.ConnectResultPage;
       newState.loginIdError = "";
       newState.passwordError = "";
@@ -183,7 +184,7 @@ export default (state = initialState, action) => {
           ];
         }
       }
-      newState.connectResult = "";
+      newState.connectResult = ConnectResult.PENDING;
       newState.currentPage = pages.ConnectedInstitutionsPage;
       newState.connectMethod = ConnectMethod.UNKNOWN;
       newState.selectedInstitution = null;
