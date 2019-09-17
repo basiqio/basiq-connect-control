@@ -30,6 +30,7 @@ export default (state = initialState, action) => {
       newState.mobile = action.value.mobile;
       newState.authenticationRequired = true;
       newState.authRequestId = action.value.authRequestId;
+      newState.institutionRegion = action.value.institutionRegion;
       break;
     case actionTypes.AUTH_REQUEST_ID_VALIDATION_FAILED:
       newState.error = action.value;

@@ -7,9 +7,10 @@ class App extends React.Component {
     BasiqConnect({containerId: "basiq-connect-container",
       token: "",
       userID: "",
-      connectLinkId: "dc964264-4993-4ebf-b871-df038ec3711a",
+      connectLinkId: "95fc4c86-3738-4f15-af97-a3a19ee957f9",
       upload: true,
       connect: true,
+      regionOfInstitutions: "Australia",
       companyName: "Persida"
     });
   }

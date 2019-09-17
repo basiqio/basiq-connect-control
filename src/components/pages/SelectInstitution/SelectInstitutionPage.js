@@ -28,7 +28,7 @@ class SelectInstitutionPage extends React.Component {
 
   render() {
     const { navigateToActionCreator, institutionSelected,
-      institutions, connectSupported, uploadSupported } = this.props;
+      institutions, institutionRegion, connectSupported, uploadSupported } = this.props;
     return (
       <div className="page-container">
         <div className="ci-title">
@@ -45,13 +45,14 @@ class SelectInstitutionPage extends React.Component {
         />
         <div className="ci-list">
           <div className="ci-upper-buffer" />
-
           {institutions.length !== 0
             ? institutions
               .filter(
                 institution =>
-                  institution.shortName.toUpperCase().includes(this.state.searchString) ||
-                  institution.name.toUpperCase().includes(this.state.searchString)
+                  ((institutionRegion === "Australia" || institutionRegion === "New Zealand") ?
+                    institution.country === institutionRegion : true) &&
+                  (institution.shortName.toUpperCase().includes(this.state.searchString) ||
+                  institution.name.toUpperCase().includes(this.state.searchString))
               )
               .map(institution => (
                 <InstitutionTumbnail

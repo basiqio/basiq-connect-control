@@ -12,11 +12,11 @@ console.log("Basiq Connect Control v1.0.3");
 
 const BasiqConnect = (inputs) => {
   if(inputs && inputs.containerId !== null){
-    const { containerId, connectLinkId, token, userID, connect, upload, companyName } = inputs;
+    const { containerId, connectLinkId, token, userID, connect, upload, companyName, regionOfInstitutions } = inputs;
     ReactDOM.render(
       <Provider store={configureStore()}>
         <App connectLink={connectLinkId} token={token} userID={userID}
-          connect={connect} upload={upload} companyName={companyName}/>
+          connect={connect} upload={upload} companyName={companyName} regionOfInstitutions={regionOfInstitutions} />
       </Provider>,
       document.getElementById(containerId));
   } else {
