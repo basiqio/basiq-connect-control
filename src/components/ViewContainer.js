@@ -12,14 +12,14 @@ const ViewContainer = ({ children, error, resendMessage }) => {
       <ImagePreloader />
       {error ? (
         <div className="vc-error-row">
-          <div className="vc-error-img-wrapper">
+          <div className="vc-img-wrapper">
             <img src={redWarning} alt="Warning icon" />
           </div>
           <div>{error}</div>
         </div>
       ) : resendMessage ? (
         <div className="vc-error-row vc-resend-message-row">
-          <div>
+          <div className="vc-img-wrapper">
             <img src={greenWarning} alt="Warning icon" />
           </div>
           <div>{resendMessage}</div>

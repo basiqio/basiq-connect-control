@@ -1,6 +1,6 @@
 .cp-ul {
   list-style-position: inside;
-  padding-left: 0px;
+  padding-left: 10px;
   line-height: 1.5;
   list-style-type: disc;
 }
@@ -9,7 +9,7 @@
   font-size: 24px;
   color: #343434;
   font-weight: 200;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 20px;
 }
 

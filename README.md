@@ -94,7 +94,7 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
 	    companyName: YOUR_COMPANY_NAME,
-		regionOfInstitutions: YOUR_REGION
+            regionOfInstitutions: YOUR_REGION
 	});
 	```
 
@@ -109,6 +109,6 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
 	    companyName: YOUR_COMPANY_NAME,
-		regionOfInstitutions: YOUR_REGION
+            regionOfInstitutions: YOUR_REGION
 	});
 	```

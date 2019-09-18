@@ -1,6 +1,8 @@
 import React from "react";
 import "./NumericCodeInputs.css";
 
+const dummyHandler = () => null;
+
 class NumericCodeInputs extends React.Component {
   constructor(props) {
     super(props);
@@ -51,13 +53,13 @@ class NumericCodeInputs extends React.Component {
     return (
       <div className="nc-container">
         <form className="nc-numeric-code" autoComplete="off">
-          <input type="tel" maxLength="1" className="nc-number"
+          <input type="tel" maxLength="1" className="nc-number" onChange={dummyHandler}
             name="number0" id="number0" ref="number0" value={smsCode[0]} autoFocus={true} />
-          <input type="tel" maxLength="1" className="nc-number"
+          <input type="tel" maxLength="1" className="nc-number" onChange={dummyHandler}
             name="number1" id="number1" ref="number1" value={smsCode[1]} />
-          <input type="tel" maxLength="1" className="nc-number"
+          <input type="tel" maxLength="1" className="nc-number" onChange={dummyHandler}
             name="number2" id="number2" ref="number2" value={smsCode[2]} />
-          <input type="tel" maxLength="1" className="nc-number"
+          <input type="tel" maxLength="1" className="nc-number" onChange={dummyHandler}
             name="number3" id="number3" ref="number3" value={smsCode[3]} />
         </form>
         <div className="nc-text-button">

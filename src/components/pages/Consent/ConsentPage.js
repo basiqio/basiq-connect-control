@@ -17,13 +17,13 @@ const accountDetails = (
 );
 
 const personalDetails = (
-  <ul style={{ listStyleType: "disc" }}>
+  <ul className="cp-ul">
     <li>Name</li>
   </ul>
 );
 
 const transactions = (
-  <ul style={{ listStyleType: "disc" }}>
+  <ul className="cp-ul">
     <li>Transaction Description</li>
     <li>Direction (Debit/Credit)</li>
     <li>Amount</li>
