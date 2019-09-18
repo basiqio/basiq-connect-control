@@ -17,7 +17,7 @@ const StatementsList = ({ statements, fileRemoved }) => {
           return a.id - b.id;
         })
         .map(statement => (
-          <div className="sl-statement-container">
+          <div key={statement.id} className="sl-statement-container">
             <div className="sl-statement">
               <img className="sl-pdf-icon" src={pdfIcon} alt="pdf" />
               {statement.filename.length > 25 ? `${statement.filename.substr(0, 25).trim()}...` : statement.filename}
