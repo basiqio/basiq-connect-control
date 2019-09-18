@@ -21,6 +21,7 @@ export const StatementStatus = {
 export const initialState = {
   currentPage: null,
   partnerName: null,
+  institutionRegion: "",
   institutionList: [],
   smsCode: ["", "", "", ""],
   smsCodeValid: false,

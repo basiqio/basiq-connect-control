@@ -68,7 +68,9 @@ Configuration object contains following parameters (note that not all parameters
 * companyName
   - Name of the company (bank) to be shown in the control; if not provided companyName defaults to name configured on [Basiq Dashboard](https://dashboard.basiq.io/)
   - Type: String
-
+* regionOfInstitutions
+  - Only institutions from this region will be shown. Valid values: Australia, New Zealand.
+  - Type: String
 
 ### Authentication
 
@@ -91,7 +93,8 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    userID: YOUR_USER_ID,
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
-	    companyName: YOUR_COMPANY_NAME
+	    companyName: YOUR_COMPANY_NAME,
+		regionOfInstitutions: YOUR_REGION
 	});
 	```
 
@@ -105,6 +108,7 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    connectLinkId: YOUR_CONNECT_LINK,
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
-	    companyName: YOUR_COMPANY_NAME
+	    companyName: YOUR_COMPANY_NAME,
+		regionOfInstitutions: YOUR_REGION
 	});
 	```

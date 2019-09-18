@@ -142,7 +142,9 @@ export const uploadStatements = ({ statements }) => dispatch => {
   });
 };
 
-export const validateAuthRequestId = ({connectLink, connect, upload, partnerName}) => async dispatch => {
+export const validateAuthRequestId = ({connectLink, connect, upload,
+  partnerName, institutionRegion}) => async dispatch => {
+
   if (!connectLink) {
     dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
   } else {
@@ -166,13 +168,22 @@ export const validateAuthRequestId = ({connectLink, connect, upload, partnerName
         partnerNameValue = authRequestResponse.payload.partner.name;
       }
 
+      let institutionRegionValue = "Australia";
+
+      if (institutionRegion) {
+        institutionRegionValue = institutionRegion;
+      } else if (authRequestResponse.payload.partner.institutionRegion) {
+        institutionRegionValue = authRequestResponse.payload.partner.institutionRegion;
+      }
+
       dispatch(
         authRequestIdValidationSucceded({
           partnerName: partnerNameValue,
           connectSupported: connectValue,
           uploadSupported: uploadValue,
           mobile: authRequestResponse.payload.mobile,
-          authRequestId: connectLink
+          authRequestId: connectLink,
+          institutionRegion: institutionRegionValue
         })
       );
       return;
