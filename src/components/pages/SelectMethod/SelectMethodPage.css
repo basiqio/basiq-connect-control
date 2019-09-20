@@ -33,18 +33,14 @@
   margin-top: 30px;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .sm-fast {
-    font-size: 13px;
-    letter-spacing: 2px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .sm-fast {
+  font-size: 13px;
+  letter-spacing: 2px;
 }
 
-@media (max-height: 600px), (max-width: 450px) {
-  .sm-fast {
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
+.vc-outer-container[max-height~="600px"] .sm-fast, .vc-outer-container[max-width~="450px"] .sm-fast {
+  font-size: 11px;
+  letter-spacing: 1px;
 }
 
 .sm-shared-container {
@@ -63,18 +59,14 @@
   border: 1px solid transparent;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .sm-bank-connect-container {
-    margin: 45px 35px 0px 35px;
-    padding: 10px 10px 10px 20px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .sm-bank-connect-container {
+  margin: 45px 35px 0px 35px;
+  padding: 10px 10px 10px 20px;
 }
 
-@media (max-height: 600px), (max-width: 450px) {
-  .sm-bank-connect-container{
-    margin: 45px 0px 0px 20px;
-    padding: 10px 0px 10px 0px;
-  }
+.vc-outer-container[max-height~="600px"] .sm-bank-connect-container, .vc-outer-container[max-width~="450px"] .sm-bank-connect-container{
+  margin: 45px 0px 0px 20px;
+  padding: 10px 0px 10px 0px;
 }
 
 .sm-bank-connect-container:hover {
@@ -101,40 +93,34 @@
   border: 1px solid transparent;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .sm-upload-cloud-container {
-    margin: 10px 35px 0px 35px;
-    padding: 10px 10px 10px 20px;
-  }
-
-  .sm-method-name {
-    font-size: 20px;
-    font-weight: 300;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .sm-upload-cloud-container {
+  margin: 10px 35px 0px 35px;
+  padding: 10px 10px 10px 20px;
 }
 
-@media (max-height: 600px), (max-width: 450px) {
-  .sm-upload-cloud-container {
-    margin: 10px 0px 0px 20px;
-    padding: 10px 0px 10px 0px;
-  }
-
-  .sm-method-name {
-    font-size: 20px;
-    font-weight: 300;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .sm-method-name {
+  font-size: 20px;
+  font-weight: 300;
 }
 
-@media (max-height: 600px), (max-width: 365px) {
-  .sm-upload-cloud-container {
-    margin: 10px 0px 0px 20px;
-    padding: 10px 0px 10px 0px;
-  }
+.vc-outer-container[max-height~="600px"] .sm-upload-cloud-container, .vc-outer-container[max-width~="450px"] .sm-upload-cloud-container {
+  margin: 10px 0px 0px 20px;
+  padding: 10px 0px 10px 0px;
+}
 
-  .sm-method-name {
-    font-size: 15px;
-    font-weight: 500;
-  }
+.vc-outer-container[max-height~="600px"] .sm-method-name, .vc-outer-container[max-width~="450px"] .sm-method-name {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.vc-outer-container[max-height~="600px"] .sm-upload-cloud-container, .vc-outer-container[max-width~="365px"] .sm-upload-cloud-container {
+  margin: 10px 0px 0px 20px;
+  padding: 10px 0px 10px 0px;
+}
+
+.vc-outer-container[max-height~="600px"] .sm-method-name, .vc-outer-container[max-width~="365px"] .sm-method-name {
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .sm-upload-cloud-container:hover {

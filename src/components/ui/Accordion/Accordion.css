@@ -7,12 +7,10 @@
   margin-right: 20px;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .accordion-list-wrapper {
-    overflow-y: auto;
-    flex: 1 0 1px;
-    margin-top: 10px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .accordion-list-wrapper {
+  overflow-y: auto;
+  flex: 1 0 1px;
+  margin-top: 10px;
 }
 
 .accordion-list {

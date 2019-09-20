@@ -44,10 +44,8 @@
   overflow-y: scroll;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .ci-list {
-    flex: 1 0 1px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .ci-list {
+  flex: 1 0 1px;
 }
 
 .ci-upper-buffer {

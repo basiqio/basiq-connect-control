@@ -8,24 +8,26 @@ import "./ViewContainer.css";
 
 const ViewContainer = ({ children, error, resendMessage }) => {
   return (
-    <div className="vc-container vc-container-size">
-      <ImagePreloader />
-      {error ? (
-        <div className="vc-error-row">
-          <div className="vc-img-wrapper">
-            <img src={redWarning} alt="Warning icon" />
+    <div className="vc-outer-container">
+      <div className="vc-container vc-container-size">
+        <ImagePreloader />
+        {error ? (
+          <div className="vc-error-row">
+            <div className="vc-img-wrapper">
+              <img src={redWarning} alt="Warning icon" />
+            </div>
+            <div>{error}</div>
           </div>
-          <div>{error}</div>
-        </div>
-      ) : resendMessage ? (
-        <div className="vc-error-row vc-resend-message-row">
-          <div className="vc-img-wrapper">
-            <img src={greenWarning} alt="Warning icon" />
+        ) : resendMessage ? (
+          <div className="vc-error-row vc-resend-message-row">
+            <div className="vc-img-wrapper">
+              <img src={greenWarning} alt="Warning icon" />
+            </div>
+            <div>{resendMessage}</div>
           </div>
-          <div>{resendMessage}</div>
-        </div>
-      ) : null}
-      <div className="vc-content-row vc-white-box">{children}</div>
+        ) : null}
+        <div className="vc-content-row vc-white-box">{children}</div>
+      </div>
     </div>
   );
 };

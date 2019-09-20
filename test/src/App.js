@@ -7,18 +7,15 @@ class App extends React.Component {
     BasiqConnect({containerId: "basiq-connect-container",
       token: "",
       userID: "",
-      connectLinkId: "95fc4c86-3738-4f15-af97-a3a19ee957f9",
+      connectLinkId: "9cd94cc9-daf3-4c7e-866a-1d016a168f3b",
       upload: true,
       connect: true,
-      regionOfInstitutions: "Australia",
       companyName: "Persida"
     });
   }
 
   render() {
-    return <div>
-      <div id="basiq-connect-container"></div>
-    </div>;
+    return <div id="basiq-connect-container"></div>;
   }
 }
 
