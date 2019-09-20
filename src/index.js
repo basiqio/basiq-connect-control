@@ -1,3 +1,5 @@
+import ElementQueries from "css-element-queries/src/ElementQueries";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -9,6 +11,9 @@ import "./styles/Layout.css";
 
 // eslint-disable-next-line no-console
 console.log("Basiq Connect Control v1.0.5");
+
+ElementQueries.listen();
+ElementQueries.init();
 
 const BasiqConnect = (inputs) => {
   if(inputs && inputs.containerId !== null){

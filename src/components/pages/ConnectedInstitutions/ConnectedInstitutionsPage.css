@@ -54,12 +54,10 @@
   margin: 30px 20px 0 20px;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .cdi-institution-list {
-    height: 25%;
-    overflow-y:auto;
-    flex:1 0 1px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .cdi-institution-list {
+  height: 25%;
+  overflow-y:auto;
+  flex:1 0 1px;
 }
 
 .cdi-institution-list-item{
@@ -80,10 +78,8 @@
   flex-grow: 1;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .cdi-page-content {
-    flex: 1 0 1px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .cdi-page-content {
+  flex: 1 0 1px;
 }
 
 .cdi-centered-bold-text {

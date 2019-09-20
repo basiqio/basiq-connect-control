@@ -60,16 +60,12 @@
   height: 0;
 }
 
-@media (max-height: 600px), (max-width: 450px) {
-  .te-divider {
-    margin: 30px 20px 30px 20px;
-  }
+.vc-outer-container[max-height~="600px"] .te-divider, .vc-outer-container[max-width~="450px"] .te-divider {
+  margin: 30px 20px 30px 20px;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .te-divider {
-    margin: 40px 100px 40px 100px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .te-divider {
+  margin: 40px 100px 40px 100px;
 }
 
 #te-continue-button {

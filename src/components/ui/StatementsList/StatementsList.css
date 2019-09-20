@@ -2,14 +2,13 @@
   height: 100%;
 }
 
-@media (min-height: 601px) and (min-width: 451px) {
-  .sl-statements-list {
-    overflow-y: auto;
-    flex: 1 0 1px;
-  }
-  .sl-statement-container {
-    min-width: 330px;
-  }
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .sl-statements-list {
+  overflow-y: auto;
+  flex: 1 0 1px;
+}
+
+.vc-outer-container[min-height~="601px"][min-width~="451px"] .sl-statement-container {
+  min-width: 330px;
 }
 
 .sl-statement-container {
