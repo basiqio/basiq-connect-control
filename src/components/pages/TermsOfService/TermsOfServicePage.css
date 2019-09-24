@@ -60,11 +60,11 @@
   height: 0;
 }
 
-.vc-outer-container[max-height~="600px"] .te-divider, .vc-outer-container[max-width~="450px"] .te-divider {
+.vc-outer-container[max-height~="479px"] .te-divider, .vc-outer-container[max-width~="439px"] .te-divider {
   margin: 30px 20px 30px 20px;
 }
 
-.vc-outer-container[min-height~="601px"][min-width~="451px"] .te-divider {
+.vc-outer-container[min-height~="480px"][min-width~="440px"] .te-divider {
   margin: 40px 100px 40px 100px;
 }
 

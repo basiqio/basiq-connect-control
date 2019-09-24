@@ -2,12 +2,12 @@
   height: 100%;
 }
 
-.vc-outer-container[min-height~="601px"][min-width~="451px"] .sl-statements-list {
+.vc-outer-container[min-height~="480px"][min-width~="440px"] .sl-statements-list {
   overflow-y: auto;
   flex: 1 0 1px;
 }
 
-.vc-outer-container[min-height~="601px"][min-width~="451px"] .sl-statement-container {
+.vc-outer-container[min-height~="480px"][min-width~="440px"] .sl-statement-container {
   min-width: 330px;
 }
 

@@ -54,7 +54,7 @@
   margin: 30px 20px 0 20px;
 }
 
-.vc-outer-container[min-height~="601px"][min-width~="451px"] .cdi-institution-list {
+.vc-outer-container[min-height~="480px"][min-width~="440px"] .cdi-institution-list {
   height: 25%;
   overflow-y:auto;
   flex:1 0 1px;
@@ -78,7 +78,7 @@
   flex-grow: 1;
 }
 
-.vc-outer-container[min-height~="601px"][min-width~="451px"] .cdi-page-content {
+.vc-outer-container[min-height~="480px"][min-width~="440px"] .cdi-page-content {
   flex: 1 0 1px;
 }
 

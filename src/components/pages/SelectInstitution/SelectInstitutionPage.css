@@ -44,7 +44,7 @@
   overflow-y: scroll;
 }
 
-.vc-outer-container[min-height~="601px"][min-width~="451px"] .ci-list {
+.vc-outer-container[min-height~="480px"][min-width~="440px"] .ci-list {
   flex: 1 0 1px;
 }
 
