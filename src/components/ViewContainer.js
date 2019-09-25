@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import ImagePreloader from "./ui/ImagePreloader";
+import pages from "./pages";
+
 import redWarning from "../assets/images/redWarning.svg";
 import greenWarning from "../assets/images/greenWarning.svg";
-import ImagePreloader from "./ui/ImagePreloader";
+
 import "./ViewContainer.css";
 
-const ViewContainer = ({ children, error, resendMessage }) => {
+const ViewContainer = ({ children, error, resendMessage, currentPage }) => {
   return (
     <div className="vc-outer-container">
       <div className="vc-container vc-container-size">
         <ImagePreloader />
-        {error ? (
+        {error && currentPage !== pages.InvalidUrlPage ? (
           <div className="vc-error-row">
             <div className="vc-img-wrapper">
               <img src={redWarning} alt="Warning icon" />

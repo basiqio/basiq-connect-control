@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 
 import * as actions from "./actions/basiqConnectAction";
 
-import pages from "./components/pages";
-
 import ViewContainer from "./components/ViewContainer";
 
 class App extends React.Component {
@@ -36,10 +34,6 @@ class App extends React.Component {
       return null;
     }
     const TagName = currentPage;
-
-    if (TagName === pages.InvalidUrlPage) {
-      return <TagName navigateToActionCreator={navigateToActionCreator} />;
-    }
 
     return (
       <ViewContainer>
