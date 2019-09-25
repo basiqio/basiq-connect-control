@@ -25,6 +25,10 @@ const statementsUploaded = (statements) => {
         }));
 };
 
+const statementsUploading = (statements) => {
+  return statements.some(statement => statement.status === StatementStatus.UPLOADING);
+};
+
 const statementsInvalid = (statements) => {
   if (statements.length === 0) {
     return false;
@@ -51,7 +55,10 @@ const UploadStatementsPage = ({
     <div className="us-statements-container">
       <div className="us-upload-stat-header">
         <div className="us-upload-stat-method-select-title">
-          <span className="us-back-icon" onClick={() => navigateToActionCreator(pages.SelectInstitutionPage)}>
+          <span className="us-back-icon"
+            style={statementsUploading(statements) ? {color : "gray"} : null}
+            onClick={!statementsUploading(statements) ?
+              () => navigateToActionCreator(pages.SelectInstitutionPage) : null}>
             ‹
           </span>
           Upload Statements
@@ -91,7 +98,8 @@ const UploadStatementsPage = ({
           </div>
         ) : statements.length ? (
           <div className="us-footnote-bottom">
-            <MainButton id="us-upload-button" onClick={() => uploadStatements({ statements })} text="Upload" />
+            <MainButton id="us-upload-button" text="Upload" disabled={statementsUploading(statements)}
+              onClick={() => uploadStatements({ statements })} />
           </div>
         ) : null}
       </div>
