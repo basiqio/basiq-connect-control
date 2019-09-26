@@ -11,6 +11,8 @@ import InstitutionTumbnail from "../../ui/InstitutionThumbnail/InstitutionThumbn
 
 import "./SelectInstitutionPage.css";
 
+const ESUPERFUND_PARTNER_ID = "8f6d03ae-e2ca-4bc9-950d-53f20b30ba73";
+
 class SelectInstitutionPage extends React.Component {
   constructor() {
     super();
@@ -26,8 +28,16 @@ class SelectInstitutionPage extends React.Component {
     });
   };
 
+  getPartnerId(token) {
+    try {
+      return JSON.parse(atob(token.split(".")[1])).partnerid;
+    } catch (e) {
+      return null;
+    }
+  }
+
   render() {
-    const { navigateToActionCreator, institutionSelected,
+    const { navigateToActionCreator, accessToken, institutionSelected,
       institutions, institutionRegion, connectSupported, uploadSupported } = this.props;
     return (
       <div className="page-container">
@@ -49,8 +59,13 @@ class SelectInstitutionPage extends React.Component {
             ? institutions
               .filter(
                 institution =>
+                  // Removing test institutions if partner is eSuperfund
+                  (this.getPartnerId(accessToken) === ESUPERFUND_PARTNER_ID ?
+                    (institution.id !== "AU00000" && institution.id !== "AU00001") : true) &&
+
                   ((institutionRegion === "Australia" || institutionRegion === "New Zealand") ?
                     institution.country === institutionRegion : true) &&
+                    
                   (institution.shortName.toUpperCase().includes(this.state.searchString) ||
                   institution.name.toUpperCase().includes(this.state.searchString))
               )
