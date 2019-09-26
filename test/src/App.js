@@ -7,7 +7,7 @@ class App extends React.Component {
     BasiqConnect({containerId: "basiq-connect-container",
       token: "",
       userID: "",
-      connectLinkId: "9cd94cc9-daf3-4c7e-866a-1d016a168f3b",
+      connectLinkId: "0e80d784-fb52-471e-9d3a-f8e1f9c41c80",
       upload: true,
       connect: true,
       companyName: "Persida"
@@ -15,7 +15,9 @@ class App extends React.Component {
   }
 
   render() {
-    return <div id="basiq-connect-container"></div>;
+    return <div className="vc-inner-container">
+      <div id="basiq-connect-container"></div>
+    </div>;
   }
 }
 
