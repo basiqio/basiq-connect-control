@@ -47,7 +47,7 @@ Basiq Connect Control exports single function (which we call BasiqConnect) which
 Configuration object contains following parameters (note that not all parameters are required):
 
 * containerId
-  - ID of the DOM element in which Basiq Connect Control will be rendered; optimal size of host element is 440px x 480px;if bigger than recommended, container should have display set to flex;
+  - ID of the DOM element in which Basiq Connect Control will be rendered; optimal size of host element is 440px x 480px; if bigger than recommended, container should have display set to flex;
   - Type: String
 * token
   - Authentication token; it is obtaining through [BasiqAPI](https://api.basiq.io/reference)
