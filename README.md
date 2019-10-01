@@ -74,7 +74,7 @@ Configuration object contains following parameters (note that not all parameters
 
 ### Authentication
 
-Basiq Connect Control requires authentication. Authentication is done by providing either (1) connect link, or (2) both access token and user id of applicant. Connect link can be obtained from [Basiq Dashboard](https://dashboard.basiq.io/); authentication token and user id can be obtained from [BasiqAPI](https://api.basiq.io/reference).
+Basiq Connect Control requires authentication. Authentication is done by providing either (1) ID part of Basiq Connect link, or (2) both access token and user id of applicant. Connect link can be obtained from [Basiq Dashboard](https://dashboard.basiq.io/); authentication token and user id can be obtained from [BasiqAPI](https://api.basiq.io/reference). If you provide ID part of Basiq Connect link you will have to go through sms verification.
 
 ### Where to call `BasiqConnect`?
 
