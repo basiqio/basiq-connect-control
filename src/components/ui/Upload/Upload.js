@@ -57,7 +57,7 @@ class Upload extends React.Component {
         this.props.filesUploadAborted();
       } else {
         Array.from(files).forEach(file => {
-          const fileId = Date.now();
+          const fileId = Date.now() + Math.floor(Math.random() * 1000);
           let extension = "";
           if(file.type === ""){
             extension = file.name.split(".").pop();
@@ -107,7 +107,7 @@ class Upload extends React.Component {
     this.setState({ dragging: false });
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       Array.from(e.dataTransfer.files).forEach(file => {
-        const fileId = Date.now();
+        const fileId = Date.now() + Math.floor(Math.random() * 1000);
         let extension = "";
         if(file.type === ""){
           extension = file.name.split(".").pop();
