@@ -1,5 +1,6 @@
 .sl-statements-list {
   height: 100%;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .vc-outer-container[min-height~="480px"][min-width~="440px"] .sl-statements-list {
