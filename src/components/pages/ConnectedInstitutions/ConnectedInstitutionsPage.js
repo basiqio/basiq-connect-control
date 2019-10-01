@@ -17,13 +17,15 @@ import "./ConnectedInstitutionsPage.css";
 const listItems = (institutionList) => institutionList.map((item, index) => (
   <div className="cdi-institution-list-item" key={index}>
     <img
-      style={{ width: 20, height: "auto", float: "left", marginRight: 15 }}
+      style={{ width: 20, height: 20, display: "inline-block", marginRight: 15 }}
       src={item.icon}
       alt="item icon"
     />
-    {item.name}
+    <label style={{ width: "100%" }}>
+      {item.name}
+    </label>
     <img
-      style={{ width: 20, height: "auto", float: "right" }}
+      style={{ width: 20, height: 20, float: "right" }}
       src={SuccessIcon}
       alt="Shiled icon"
     />
