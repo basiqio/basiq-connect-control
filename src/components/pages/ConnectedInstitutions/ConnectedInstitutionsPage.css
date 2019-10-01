@@ -64,12 +64,18 @@
   border-top: 2px solid #dedede;
   padding: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cdi-institution-list-item:last-child{
   border-top: 2px solid #dedede;
   border-bottom: 2px solid #dedede;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cdi-page-content {
