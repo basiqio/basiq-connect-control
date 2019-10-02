@@ -42,6 +42,7 @@
   align-items: flex-start;
   align-content: flex-start;
   overflow-y: scroll;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .vc-outer-container[min-height~="480px"][min-width~="440px"] .ci-list {
