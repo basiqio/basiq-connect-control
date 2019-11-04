@@ -25,7 +25,7 @@ const connectCredentialsValidationFailed = value => ({
 const tokenValidationFailed =  ({value}) => ({ type: actionTypes.TOKEN_VALIDATION_FAILED, value });
 const tokenValidationSucceded = value => ({ type: actionTypes.TOKEN_VALIDATION_SUCCEDED, value });
 
-const validateInputs = ({ selectedInstitution, loginId, password, securityCode, secondaryLoginId }) => {
+const validateInputs = ({ selectedInstitution, loginId, password }) => {
   const errors = {};
   
   if (!loginId) {
@@ -34,12 +34,7 @@ const validateInputs = ({ selectedInstitution, loginId, password, securityCode, 
   if (!password) {
     errors["password"] = `You must provide ${selectedInstitution.passwordCaption}`;
   }
-  if (selectedInstitution.secondaryLoginIdCaption && !secondaryLoginId) {
-    errors["secondaryLoginId"] = `You must provide ${selectedInstitution.secondaryLoginIdCaption}`;
-  }
-  if (selectedInstitution.securityCodeCaption && !securityCode) {
-    errors["securityCode"] = `You must provide ${selectedInstitution.securityCodeCaption}`;
-  }
+
   return { valid: Object.keys(errors).length === 0, errors };
 };
 
@@ -86,7 +81,7 @@ export const connectToBank = (
   securityCode,
   secondaryLoginId
 ) => async dispatch => {
-  const { valid, errors } = validateInputs({ selectedInstitution, loginId, password, securityCode, secondaryLoginId });
+  const { valid, errors } = validateInputs({ selectedInstitution, loginId, password });
   if (!valid) {
     dispatch(connectCredentialsValidationFailed(errors));
     return;
