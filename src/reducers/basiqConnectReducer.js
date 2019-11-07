@@ -247,6 +247,7 @@ export default (state = initialState, action) => {
       newState.userId = action.value.userId;
       newState.accessToken = action.value.token;
       newState.partnerName = action.value.partnerName;
+      newState.institutionRegion = action.value.institutionRegion;
       break;
     case actionTypes.AUTHORIZATION_FAILED:
       newState.error = "Authorization failed";

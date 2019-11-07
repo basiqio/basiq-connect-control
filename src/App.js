@@ -14,7 +14,8 @@ class App extends React.Component {
        this.props.userID !== undefined &&
        this.props.userID !== "") {
       this.props.validateToken({token: this.props.token, userId: this.props.userID,
-        connect: this.props.connect, upload: this.props.upload, partnerName: this.props.companyName});
+        connect: this.props.connect, upload: this.props.upload,
+        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions });
       this.props.fetchInstitutions();
     } else if(this.props.connectLink !== undefined && this.props.connectLink !== ""){
       this.props.validateAuthRequestId({connectLink: this.props.connectLink,

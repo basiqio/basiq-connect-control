@@ -187,7 +187,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
   }
 };
 
-export const validateToken = ({token, userId, connect, upload, partnerName}) => async dispatch => {
+export const validateToken = ({token, userId, connect, upload, partnerName, institutionRegion}) => async dispatch => {
   const parsedJwt = parseJwt(token);
   const errorMessage = "Authorization failed";
   if (!parsedJwt) {
@@ -211,7 +211,8 @@ export const validateToken = ({token, userId, connect, upload, partnerName}) => 
       userId,
       connect: connectValue,
       upload: uploadValue,
-      partnerName
+      partnerName,
+      institutionRegion
     }));
   } else {
     // eslint-disable-next-line no-console
