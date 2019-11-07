@@ -138,7 +138,7 @@ export const uploadStatements = ({ statements }) => dispatch => {
 };
 
 export const validateAuthRequestId = ({connectLink, connect, upload,
-  partnerName, institutionRegion}) => async dispatch => {
+  partnerName, institutionRegion, showTestBanks}) => async dispatch => {
 
   if (!connectLink) {
     dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
@@ -170,6 +170,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
       } else if (authRequestResponse.payload.partner.institutionRegion) {
         institutionRegionValue = authRequestResponse.payload.partner.institutionRegion;
       }
+      let showTestBanksValue = showTestBanks !== undefined ? showTestBanks : true;
 
       dispatch(
         authRequestIdValidationSucceded({
@@ -178,7 +179,8 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
           uploadSupported: uploadValue,
           mobile: authRequestResponse.payload.mobile,
           authRequestId: connectLink,
-          institutionRegion: institutionRegionValue
+          institutionRegion: institutionRegionValue,
+          showTestBanks: showTestBanksValue
         })
       );
       return;
@@ -187,7 +189,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
   }
 };
 
-export const validateToken = ({token, userId, connect, upload, partnerName, institutionRegion}) => async dispatch => {
+export const validateToken = ({token, userId, connect, upload, partnerName, institutionRegion, showTestBanks}) => async dispatch => {
   const parsedJwt = parseJwt(token);
   const errorMessage = "Authorization failed";
   if (!parsedJwt) {
@@ -205,6 +207,7 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
       connectValue = true;
       uploadValue = false;
     }
+    let showTestBanksValue = showTestBanks !== undefined ? showTestBanks : true;
     
     dispatch(tokenValidationSucceded({
       token,
@@ -212,7 +215,8 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
       connect: connectValue,
       upload: uploadValue,
       partnerName,
-      institutionRegion
+      institutionRegion,
+      showTestBanks: showTestBanksValue
     }));
   } else {
     // eslint-disable-next-line no-console
