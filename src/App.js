@@ -15,12 +15,12 @@ class App extends React.Component {
        this.props.userID !== "") {
       this.props.validateToken({token: this.props.token, userId: this.props.userID,
         connect: this.props.connect, upload: this.props.upload,
-        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, showTestBanks: this.props.showTestBanks });
+        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, hideTestBanks: this.props.hideTestBanks });
       this.props.fetchInstitutions();
     } else if(this.props.connectLink !== undefined && this.props.connectLink !== ""){
       this.props.validateAuthRequestId({connectLink: this.props.connectLink,
         connect: this.props.connect, upload: this.props.upload,
-        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, showTestBanks: this.props.showTestBanks });
+        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, hideTestBanks: this.props.hideTestBanks });
       this.props.fetchInstitutions();
     } else {
       // eslint-disable-next-line no-console
@@ -53,7 +53,7 @@ App.propTypes = {
   connect: PropTypes.bool,
   upload: PropTypes.bool,
   companyName: PropTypes.string,
-  showTestBanks: PropTypes.bool
+  hideTestBanks: PropTypes.bool
 };
 
 const mapStateToProps = ({ basiqConnect }) => basiqConnect;

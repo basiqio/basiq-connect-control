@@ -71,6 +71,9 @@ Configuration object contains following parameters (note that not all parameters
 * regionOfInstitutions
   - Only institutions from this region will be shown. Valid values: Australia, New Zealand.
   - Type: String
+* hideTestBanks
+  - True if test banks (Basiq and Hooli) should be hidden in list of all banks you can connect to
+  - Type: Boolean
 
 ### Authentication
 
@@ -94,7 +97,8 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
 	    companyName: YOUR_COMPANY_NAME,
-            regionOfInstitutions: YOUR_REGION
+      regionOfInstitutions: YOUR_REGION,
+      hideTestBanks: TRUE/FALSE
 	});
 	```
 
@@ -109,6 +113,7 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
 	    companyName: YOUR_COMPANY_NAME,
-            regionOfInstitutions: YOUR_REGION
+      regionOfInstitutions: YOUR_REGION,
+      hideTestBanks: TRUE/FALSE
 	});
 	```

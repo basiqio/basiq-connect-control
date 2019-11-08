@@ -138,7 +138,7 @@ export const uploadStatements = ({ statements }) => dispatch => {
 };
 
 export const validateAuthRequestId = ({connectLink, connect, upload,
-  partnerName, institutionRegion, showTestBanks}) => async dispatch => {
+  partnerName, institutionRegion, hideTestBanks}) => async dispatch => {
 
   if (!connectLink) {
     dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
@@ -170,7 +170,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
       } else if (authRequestResponse.payload.partner.institutionRegion) {
         institutionRegionValue = authRequestResponse.payload.partner.institutionRegion;
       }
-      let showTestBanksValue = showTestBanks !== undefined ? showTestBanks : true;
+      let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : false;
 
       dispatch(
         authRequestIdValidationSucceded({
@@ -180,7 +180,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
           mobile: authRequestResponse.payload.mobile,
           authRequestId: connectLink,
           institutionRegion: institutionRegionValue,
-          showTestBanks: showTestBanksValue
+          hideTestBanks: hideTestBanksValue
         })
       );
       return;
@@ -189,7 +189,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
   }
 };
 
-export const validateToken = ({token, userId, connect, upload, partnerName, institutionRegion, showTestBanks}) => async dispatch => {
+export const validateToken = ({token, userId, connect, upload, partnerName, institutionRegion, hideTestBanks}) => async dispatch => {
   const parsedJwt = parseJwt(token);
   const errorMessage = "Authorization failed";
   if (!parsedJwt) {
@@ -207,7 +207,7 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
       connectValue = true;
       uploadValue = false;
     }
-    let showTestBanksValue = showTestBanks !== undefined ? showTestBanks : true;
+    let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : false;
     
     dispatch(tokenValidationSucceded({
       token,
@@ -216,7 +216,7 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
       upload: uploadValue,
       partnerName,
       institutionRegion,
-      showTestBanks: showTestBanksValue
+      hideTestBanks: hideTestBanksValue
     }));
   } else {
     // eslint-disable-next-line no-console
