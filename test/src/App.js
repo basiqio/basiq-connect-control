@@ -4,20 +4,19 @@ import "./App.css";
 
 class App extends React.Component {
   async componentDidMount(){
-    BasiqConnect({containerId: "basiq-connect-container",
+    /*BasiqConnect({containerId: "basiq-connect-container",
       token: "",
       userID: "",
-      connectLinkId: "63d1c003-011e-4d8d-a186-08a32ece4779",
-      companyName: "blah"
+      connectLinkId: "0b3a1a45-f310-415a-a520-ebae47a563f0"
     });
-    /*
+    */
     BasiqConnect({containerId: "basiq-connect-container",
-      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXJ0bmVyaWQiOiI4YzdmNDExYy1mNzUxLTQ0MmMtOTY5YS1lOGViZTgwMDNiMWQiLCJhcHBsaWNhdGlvbmlkIjoiNjdhNDdmNGEtMjYwNS00YTU1LThlN2QtMTVkYmFmNWFmZGM0Iiwic2NvcGUiOiJTRVJWRVJfQUNDRVNTIiwic2FuZGJveF9hY2NvdW50IjpmYWxzZSwiY29ubmVjdF9zdGF0ZW1lbnRzIjp0cnVlLCJhZmZvcmRhYmlsaXR5IjoicGFpZCIsImluY29tZSI6InBhaWQiLCJleHBlbnNlcyI6InBhaWQiLCJleHAiOjE1NzMyMDQ1MjgsImlhdCI6MTU3MzIwMDkyOCwidmVyc2lvbiI6IjIuMCJ9.P-ssBzaFXdXZIjAh1IfLsl83nzd5LryD-_bojcvd7UI",
-      userID: "0a37ab92-f0f2-4c77-ac0f-643d92616a52",
+      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXJ0bmVyaWQiOiIzZDRiODlkOC0wOWY1LTRiMGItODgxMC1hY2UwNzI5NWE4ODUiLCJhcHBsaWNhdGlvbmlkIjoiY2IzOTFkMDgtMDljNy00MDdhLTkwMTYtMjI1MjY3MzhiOWFlIiwic2NvcGUiOiJTRVJWRVJfQUNDRVNTIiwic2FuZGJveF9hY2NvdW50Ijp0cnVlLCJhZmZvcmRhYmlsaXR5IjoicGFpZCIsImluY29tZSI6InBhaWQiLCJleHBlbnNlcyI6InBhaWQiLCJleHAiOjE1NzMyMzA5NTAsImlhdCI6MTU3MzIyNzM1MCwidmVyc2lvbiI6IjIuMCJ9.QDU4VK7KrMburkzmvaU8BPCMbSUP92qmAllqLB_Zqeo",
+      userID: "e5aedda2-b7b3-4b32-b311-27d8df5127a2",
       connectLinkId: "",
       companyName: "Lalalal",
       regionOfInstitutions: "Australia"
-      })*/
+      })
   }
 
   render() {

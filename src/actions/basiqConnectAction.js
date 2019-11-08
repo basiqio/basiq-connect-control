@@ -170,7 +170,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
       } else if (authRequestResponse.payload.partner.institutionRegion) {
         institutionRegionValue = authRequestResponse.payload.partner.institutionRegion;
       }
-      let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : false;
+      let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : authRequestResponse.payload.partner.hideTestBanks;
 
       dispatch(
         authRequestIdValidationSucceded({
