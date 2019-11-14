@@ -15,13 +15,11 @@ class App extends React.Component {
        this.props.userID !== "") {
       this.props.validateToken({token: this.props.token, userId: this.props.userID,
         connect: this.props.connect, upload: this.props.upload,
-        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, hideTestBanks: this.props.hideTestBanks });
-      this.props.fetchInstitutions();
+        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, hideTestBanks: this.props.hideTestBanks, hideBetaBanks: this.props.hideBetaBanks });
     } else if(this.props.connectLink !== undefined && this.props.connectLink !== ""){
       this.props.validateAuthRequestId({connectLink: this.props.connectLink,
         connect: this.props.connect, upload: this.props.upload,
-        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, hideTestBanks: this.props.hideTestBanks });
-      this.props.fetchInstitutions();
+        partnerName: this.props.companyName, institutionRegion: this.props.regionOfInstitutions, hideTestBanks: this.props.hideTestBanks, hideBetaBanks: this.props.hideBetaBanks });
     } else {
       // eslint-disable-next-line no-console
       console.error("BASIQ CONNECT CONTROL ERROR: You have to provide authentication id or user id and access token.");
@@ -53,7 +51,8 @@ App.propTypes = {
   connect: PropTypes.bool,
   upload: PropTypes.bool,
   companyName: PropTypes.string,
-  hideTestBanks: PropTypes.bool
+  hideTestBanks: PropTypes.bool,
+  hideBetaBanks: PropTypes.bool
 };
 
 const mapStateToProps = ({ basiqConnect }) => basiqConnect;

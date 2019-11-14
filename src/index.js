@@ -17,11 +17,11 @@ ElementQueries.init();
 
 const BasiqConnect = (inputs) => {
   if(inputs && inputs.containerId !== null){
-    const { containerId, connectLinkId, token, userID, connect, upload, companyName, regionOfInstitutions, hideTestBanks } = inputs;
+    const { containerId, connectLinkId, token, userID, connect, upload, companyName, regionOfInstitutions, hideTestBanks, hideBetaBanks } = inputs;
     ReactDOM.render(
       <Provider store={configureStore()}>
         <App connectLink={connectLinkId} token={token} userID={userID}
-          connect={connect} upload={upload} companyName={companyName} regionOfInstitutions={regionOfInstitutions} hideTestBanks={hideTestBanks}/>
+          connect={connect} upload={upload} companyName={companyName} regionOfInstitutions={regionOfInstitutions} hideTestBanks={hideTestBanks} hideBetaBanks={hideBetaBanks}/>
       </Provider>,
       document.getElementById(containerId));
   } else {

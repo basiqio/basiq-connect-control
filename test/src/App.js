@@ -4,18 +4,20 @@ import "./App.css";
 
 class App extends React.Component {
   async componentDidMount(){
+    
     /*BasiqConnect({containerId: "basiq-connect-container",
-      token: "",
-      userID: "",
-      connectLinkId: "0b3a1a45-f310-415a-a520-ebae47a563f0"
-    });
-    */
+      connectLinkId: "0c1e72d9-a6ac-43bb-82cb-6952926c1ef7",
+      hideBetaBanks: true,
+      regionOfInstitutions: "Australia"
+    });*/
+    
     BasiqConnect({containerId: "basiq-connect-container",
-      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXJ0bmVyaWQiOiIzZDRiODlkOC0wOWY1LTRiMGItODgxMC1hY2UwNzI5NWE4ODUiLCJhcHBsaWNhdGlvbmlkIjoiY2IzOTFkMDgtMDljNy00MDdhLTkwMTYtMjI1MjY3MzhiOWFlIiwic2NvcGUiOiJTRVJWRVJfQUNDRVNTIiwic2FuZGJveF9hY2NvdW50Ijp0cnVlLCJhZmZvcmRhYmlsaXR5IjoicGFpZCIsImluY29tZSI6InBhaWQiLCJleHBlbnNlcyI6InBhaWQiLCJleHAiOjE1NzMyMzA5NTAsImlhdCI6MTU3MzIyNzM1MCwidmVyc2lvbiI6IjIuMCJ9.QDU4VK7KrMburkzmvaU8BPCMbSUP92qmAllqLB_Zqeo",
-      userID: "e5aedda2-b7b3-4b32-b311-27d8df5127a2",
+      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXJ0bmVyaWQiOiJiMWZiNDk1ZC0zZmEzLTRhNmQtYjRkYi0xOTYzYmY1OWRmY2IiLCJhcHBsaWNhdGlvbmlkIjoiNjk2YzI4MDItMGVhMS00ODk3LThmOTUtYTY2ZmY5NDQ5YjQ4Iiwic2NvcGUiOiJTRVJWRVJfQUNDRVNTIiwic2FuZGJveF9hY2NvdW50IjpmYWxzZSwiYWZmb3JkYWJpbGl0eSI6InBhaWQiLCJpbmNvbWUiOiJwYWlkIiwiZXhwZW5zZXMiOiJwYWlkIiwiZXhwIjoxNTczNzM3OTIzLCJpYXQiOjE1NzM3MzQzMjMsInZlcnNpb24iOiIyLjAifQ.1XGE2gYQLp2xobZnTbSIBPM_3tMSW4DZ9mc8S-tWA0k",
+      userID: "9fc98249-ba11-43a1-8307-1ef27aeca784",
       connectLinkId: "",
       companyName: "Lalalal",
-      regionOfInstitutions: "Australia"
+      regionOfInstitutions: "Australia",
+      hideBetaBanks: true
       })
   }
 

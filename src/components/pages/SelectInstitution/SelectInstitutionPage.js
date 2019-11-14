@@ -38,7 +38,7 @@ class SelectInstitutionPage extends React.Component {
 
   render() {
     const { navigateToActionCreator, accessToken, institutionSelected,
-      institutions, institutionRegion, connectSupported, uploadSupported, hideTestBanks } = this.props;
+      institutions, institutionRegion, connectSupported, uploadSupported, hideTestBanks, hideBetaBanks } = this.props;
     return (
       <div className="page-container">
         <div className="ci-title">

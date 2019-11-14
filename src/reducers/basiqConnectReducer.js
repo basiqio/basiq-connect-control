@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
       newState.authRequestId = action.value.authRequestId;
       newState.institutionRegion = action.value.institutionRegion;
       newState.hideTestBanks = action.value.hideTestBanks;
+      newState.hideBetaBanks = action.value.hideBetaBanks;
       break;
     case actionTypes.AUTH_REQUEST_ID_VALIDATION_FAILED:
       newState.error = action.value;
@@ -250,6 +251,7 @@ export default (state = initialState, action) => {
       newState.partnerName = action.value.partnerName;
       newState.institutionRegion = action.value.institutionRegion;
       newState.hideTestBanks = action.value.hideTestBanks;
+      newState.hideBetaBanks = action.value.hideBetaBanks;
       break;
     case actionTypes.AUTHORIZATION_FAILED:
       newState.error = "Authorization failed";
