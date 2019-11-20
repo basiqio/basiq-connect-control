@@ -112,8 +112,8 @@ export const connectToBank = (
   });
 };
 
-export const fetchInstitutions = () => async dispatch => {
-  const institutions = await apiService.getInstitutions();
+export const fetchInstitutions = (hideBetaBanks) => async dispatch => {
+  const institutions = await apiService.getInstitutions(hideBetaBanks);
 
   if (!institutions.ok) {
     dispatch(institutionsFetchFailed());
@@ -138,7 +138,7 @@ export const uploadStatements = ({ statements }) => dispatch => {
 };
 
 export const validateAuthRequestId = ({connectLink, connect, upload,
-  partnerName, institutionRegion}) => async dispatch => {
+  partnerName, institutionRegion, hideTestBanks, hideBetaBanks}) => async dispatch => {
 
   if (!connectLink) {
     dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
@@ -170,6 +170,8 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
       } else if (authRequestResponse.payload.partner.institutionRegion) {
         institutionRegionValue = authRequestResponse.payload.partner.institutionRegion;
       }
+      let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : authRequestResponse.payload.partner.hideTestBanks;
+      let hideBetaBanksValue = hideBetaBanks !== undefined ? hideBetaBanks : authRequestResponse.payload.partner.hideBetaBanks;
 
       dispatch(
         authRequestIdValidationSucceded({
@@ -178,16 +180,19 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
           uploadSupported: uploadValue,
           mobile: authRequestResponse.payload.mobile,
           authRequestId: connectLink,
-          institutionRegion: institutionRegionValue
+          institutionRegion: institutionRegionValue,
+          hideTestBanks: hideTestBanksValue,
+          hideBetaBanks: hideBetaBanksValue
         })
       );
+      dispatch(fetchInstitutions(hideBetaBanks))
       return;
     }
     dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
   }
 };
 
-export const validateToken = ({token, userId, connect, upload, partnerName}) => async dispatch => {
+export const validateToken = ({token, userId, connect, upload, partnerName, institutionRegion, hideTestBanks, hideBetaBanks}) => async dispatch => {
   const parsedJwt = parseJwt(token);
   const errorMessage = "Authorization failed";
   if (!parsedJwt) {
@@ -205,14 +210,21 @@ export const validateToken = ({token, userId, connect, upload, partnerName}) => 
       connectValue = true;
       uploadValue = false;
     }
+    let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : false;
+    let hideBetaBanksValue = hideBetaBanks !== undefined ? hideBetaBanks : false;
+
     
     dispatch(tokenValidationSucceded({
       token,
       userId,
       connect: connectValue,
       upload: uploadValue,
-      partnerName
+      partnerName,
+      institutionRegion,
+      hideTestBanks: hideTestBanksValue,
+      hideBetaBanks: hideBetaBanksValue
     }));
+    dispatch(fetchInstitutions(hideBetaBanks))
   } else {
     // eslint-disable-next-line no-console
     console.error("BASIC CONNECT CONTROL ERROR: Provided token and user id are not valid.");
