@@ -12,10 +12,10 @@
 
 import { doGet, doPost } from "./genericHttpClient";
 
-//const API_URL = "https://au-api.basiq.io";
-//const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
-const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
-const DASHBOARD_API_URL = "https://c9joivz12f.execute-api.ap-southeast-2.amazonaws.com/Development/";
+const API_URL = "https://au-api.basiq.io";
+const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
+//const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
+//const DASHBOARD_API_URL = "https://c9joivz12f.execute-api.ap-southeast-2.amazonaws.com/Development/";
 
 let userToken = "";
 let authorizationHeader = {
