@@ -100,9 +100,9 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
 	    companyName: YOUR_COMPANY_NAME,
-      regionOfInstitutions: YOUR_REGION,
-      hideTestBanks: TRUE/FALSE,
-			hideBetaBanks: TRUE/FALSE
+      	    regionOfInstitutions: YOUR_REGION,
+            hideTestBanks: TRUE/FALSE,
+            hideBetaBanks: TRUE/FALSE
 	});
 	```
 
@@ -117,8 +117,8 @@ If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere 
 	    upload: TRUE/FALSE,
 	    connect: TRUE/FALSE,
 	    companyName: YOUR_COMPANY_NAME,
-      regionOfInstitutions: YOUR_REGION,
-      hideTestBanks: TRUE/FALSE,
-      hideBetaBanks: TRUE/FALSE
+            regionOfInstitutions: YOUR_REGION,
+            hideTestBanks: TRUE/FALSE,
+            hideBetaBanks: TRUE/FALSE
 	});
 	```
