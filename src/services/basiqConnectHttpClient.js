@@ -81,8 +81,12 @@ export async function getUser(token, id) {
   return await doGet(`${API_URL}/users/${id}`, null, headers);
 }
 
-export async function getInstitutions(hideBetaBanks) {
-  if(hideBetaBanks){
+export async function getInstitutions(hideBetaBanks, institutionRegion) {
+  if(hideBetaBanks && institutionRegion){
+    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}')`);
+  } else if(institutionRegion){
+    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.country.eq('${institutionRegion}')`);
+  } else if (hideBetaBanks){
     return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.connectorStatus.eq('active')`);
   }
   return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user')`);

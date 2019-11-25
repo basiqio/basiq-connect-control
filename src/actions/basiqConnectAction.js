@@ -112,8 +112,8 @@ export const connectToBank = (
   });
 };
 
-export const fetchInstitutions = (hideBetaBanks) => async dispatch => {
-  const institutions = await apiService.getInstitutions(hideBetaBanks);
+export const fetchInstitutions = (hideBetaBanks, institutionRegion) => async dispatch => {
+  const institutions = await apiService.getInstitutions(hideBetaBanks, institutionRegion);
 
   if (!institutions.ok) {
     dispatch(institutionsFetchFailed());
@@ -185,7 +185,7 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
           hideBetaBanks: hideBetaBanksValue
         })
       );
-      dispatch(fetchInstitutions(hideBetaBanks))
+      dispatch(fetchInstitutions(hideBetaBanks, institutionRegionValue))
       return;
     }
     dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
@@ -210,6 +210,12 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
       connectValue = true;
       uploadValue = false;
     }
+
+    let institutionRegionValue = "Australia";
+    if (institutionRegion) {
+      institutionRegionValue = institutionRegion;
+    }
+
     let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : false;
     let hideBetaBanksValue = hideBetaBanks !== undefined ? hideBetaBanks : false;
 
@@ -220,11 +226,11 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
       connect: connectValue,
       upload: uploadValue,
       partnerName,
-      institutionRegion,
+      institutionRegion: institutionRegionValue,
       hideTestBanks: hideTestBanksValue,
       hideBetaBanks: hideBetaBanksValue
     }));
-    dispatch(fetchInstitutions(hideBetaBanks))
+    dispatch(fetchInstitutions(hideBetaBanks, institutionRegionValue))
   } else {
     // eslint-disable-next-line no-console
     console.error("BASIC CONNECT CONTROL ERROR: Provided token and user id are not valid.");

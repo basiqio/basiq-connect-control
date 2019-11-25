@@ -38,7 +38,7 @@ class SelectInstitutionPage extends React.Component {
 
   render() {
     const { navigateToActionCreator, accessToken, institutionSelected,
-      institutions, institutionRegion, connectSupported, uploadSupported, hideTestBanks, hideBetaBanks } = this.props;
+      institutions, connectSupported, uploadSupported, hideTestBanks} = this.props;
     return (
       <div className="page-container">
         <div className="ci-title">
@@ -62,10 +62,6 @@ class SelectInstitutionPage extends React.Component {
                   // Removing test institutions if partner is eSuperfund
                   (this.getPartnerId(accessToken) === ESUPERFUND_PARTNER_ID || hideTestBanks ?
                     (institution.id !== "AU00000" && institution.id !== "AU00001") : true) &&
-
-                  ((institutionRegion === "Australia" || institutionRegion === "New Zealand") ?
-                    institution.country === institutionRegion : true) &&
-                    
                   (institution.shortName.toUpperCase().includes(this.state.searchString) ||
                   institution.name.toUpperCase().includes(this.state.searchString))
               )
