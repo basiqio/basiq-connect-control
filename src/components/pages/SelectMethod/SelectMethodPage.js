@@ -21,7 +21,8 @@ const SelectMethodPage = ({ connectMethodSelected, navigateToActionCreator, inst
           navigateToActionCreator(pages.ConnectedInstitutionsPage)}>
             ‹
       </span>
-      How will you share?
+      <p>How will you share?</p>
+      <div style={{width:"38px"}}></div>
     </div>
 
     <div className="sm-question">

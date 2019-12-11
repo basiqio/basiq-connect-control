@@ -41,20 +41,21 @@ class SelectInstitutionPage extends React.Component {
       institutions, connectSupported, uploadSupported, hideTestBanks} = this.props;
     return (
       <div className="page-container">
-        <div className="ci-title">
-          <span className="ci-back-icon" onClick={() => connectSupported && uploadSupported ?
+        <div className="si-title">
+          <span className="si-back-icon" onClick={() => connectSupported && uploadSupported ?
             navigateToActionCreator(pages.SelectMethodPage) :
             navigateToActionCreator(pages.ConnectInstitutionPage)}>‹</span>
-          Select your bank
+          <p>Select your bank</p>
+          <div style={{width:"38px"}}></div>
         </div>
         <input
-          className="ci-search"
+          className="si-search"
           type="text"
           placeholder="Search Banks"
           onChange={this.handleSearchInputChange}
         />
-        <div className="ci-list">
-          <div className="ci-upper-buffer" />
+        <div className="si-list">
+          <div className="si-upper-buffer" />
           {institutions.length !== 0
             ? institutions
               .filter(
@@ -75,7 +76,7 @@ class SelectInstitutionPage extends React.Component {
               ))
             : null}
 
-          <div className="ci-lower-buffer" />
+          <div className="si-lower-buffer" />
         </div>
       </div>
     );

@@ -35,7 +35,8 @@ const ProvideCredentialsPage = ({
         password, securityCode, secondaryLoginId) : null}>
       <span className="pc-title">
         <span className="pc-back-icon" onClick={() => navigateToActionCreator(pages.SelectInstitutionPage)}>‹</span>
-        Login
+        <p>Login</p>
+        <div style={{width:"38px"}}></div>
       </span>
       <div className="pc-institution-logo">
         <img

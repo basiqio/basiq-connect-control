@@ -37,7 +37,9 @@ const ConnectResultPage = ({ connectResult, bankConnectFinished, navigateToActio
         {connectResult === ConnectResult.FAILURE ? (
           <span className="cr-back-icon" onClick={() => navigateToActionCreator(pages.ProvideCredentialsPage)}>‹</span>
         ) : null}
-        {title}
+        <p>{title}</p>
+        {connectResult === ConnectResult.FAILURE ? (
+        <div style={{width:"38px"}}></div>) : null}
       </div>
       <div className="cr-result-container">
         <div>
