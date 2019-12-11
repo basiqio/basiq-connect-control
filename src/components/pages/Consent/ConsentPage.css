@@ -9,8 +9,9 @@
   font-size: 24px;
   color: #343434;
   font-weight: 200;
-  margin-top: 10px;
-  margin-left: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .con-subtitle {

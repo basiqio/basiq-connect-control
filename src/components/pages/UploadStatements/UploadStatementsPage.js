@@ -61,7 +61,8 @@ const UploadStatementsPage = ({
               () => navigateToActionCreator(pages.SelectInstitutionPage) : null}>
             ‹
           </span>
-          Upload Statements
+          <p>Upload Statements</p>
+          <div style={{width:"38px"}}></div>
         </div>
         <div className="us-upload-bank-logo-container">
           <img id="us-upload-bank-logo" src={selectedInstitution.logo.links.full} alt={selectedInstitution.shortName} />

@@ -9,6 +9,11 @@
   font-weight: 200;
   margin-top: 20px;
   margin-left: 20px;
+  display: flex;
+}
+
+.sm-title > p {
+  margin: auto;
 }
 
 .sm-back-icon {
@@ -17,7 +22,7 @@
   font-size: 50px;
   position: relative;
   line-height: 0px;
-  top: 5px;
+  top: 10px;
   margin-right: 6px;
 }
 

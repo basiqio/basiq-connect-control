@@ -4,6 +4,11 @@
   font-weight: 200;
   margin-top: 20px;
   margin-left: 20px;
+  display: flex;
+}
+
+.cr-title > p {
+  margin: auto;
 }
 
 .cr-text {
@@ -33,7 +38,7 @@
   font-size: 50px;
   position: relative;
   line-height: 0px;
-  top: 5px;
+  top: 10px;
   margin-right: 6px;
 }
 
