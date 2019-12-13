@@ -68,6 +68,12 @@ export const fileAdded = value => ({ type: actionTypes.FILE_ADDED, value });
 
 export const authorizationFailed = () => ({type: actionTypes.AUTHORIZATION_FAILED});
 
+export const authLinkDisableStarted = () => ({type: actionTypes.AUTH_LINK_DISABLE_STARTED});
+
+export const authLinkDisableSuccess = () => ({type: actionTypes.AUTH_LINK_DISABLE_SUCCESS});
+
+export const authLinkDisableFailed = () => ({type: actionTypes.AUTH_LINK_DISABLE_FAILED});
+
 export const connectMethodSelected = method => ({
   type: actionTypes.INPUT_METHOD_SELECTED,
   value: { method, page: pages.SelectInstitutionPage }
@@ -310,3 +316,15 @@ export const verifySmsCode = (authRequestId, smsCode) => async dispatch => {
     dispatch(smsCodeValidationFailed({ value: errorMessage }));
   }
 };
+
+export const disableAuthLink = () => async dispatch => {
+  dispatch(navigateToActionCreator(pages.SuccessPage));
+  dispatch(authLinkDisableStarted());
+  const result = await apiService.disableAuthLink();
+  if (result.ok) {
+    dispatch(authLinkDisableSuccess());
+  }
+  else{
+    dispatch(authLinkDisableFailed());
+  }
+}
