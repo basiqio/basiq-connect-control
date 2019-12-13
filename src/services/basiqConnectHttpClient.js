@@ -10,7 +10,7 @@
  * All http communication in basiq-connect should be contianed in this module.
  */
 
-import { doGet, doPost } from "./genericHttpClient";
+import { doGet, doPost, doDelete } from "./genericHttpClient";
 
 const API_URL = "https://au-api.basiq.io";
 const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
@@ -40,7 +40,16 @@ export function setToken(id, token) {
 }
 
 export async function verifyAuthRequestId(authRequestId) {
+ 
   return await doGet(`${DASHBOARD_API_URL}client_auth/${authRequestId}`);
+}
+
+export async function disableAuthLink(){
+  const headers = {
+    "Content-Type": "application/json",
+    ...authorizationHeader
+  };
+  return await doDelete(`${API_URL}/users/${userId}/auth_link`, null, null, headers);
 }
 
 export async function invokeSmsVerificationCode(authRequestId) {

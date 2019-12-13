@@ -33,7 +33,7 @@ const listItems = (institutionList) => institutionList.map((item, index) => (
 ));
 
 const ConnectedInstitutionsPage = ({ navigateToActionCreator, institutionList,
-  showBankConnect, userId, accessToken, connectSupported, uploadSupported }) => (
+  showBankConnect, userId, accessToken, connectSupported, uploadSupported, disableAuthLink }) => (
   <div className="page-container">
 
     <div className="cdi-title">Connect to Bank</div>
@@ -64,7 +64,7 @@ const ConnectedInstitutionsPage = ({ navigateToActionCreator, institutionList,
         Your data is protected using 256-bit encryption.
       </div>
       <MainButton id="cdi-inst-list-button"
-        onClick={() => navigateToActionCreator(pages.SuccessPage)} text="I have disclosed all banks" />
+        onClick={disableAuthLink} text="I have disclosed all banks" />
     </div>
   </div>
 );
@@ -76,7 +76,8 @@ ConnectedInstitutionsPage.propTypes = {
   userId: PropTypes.string,
   accessToken: PropTypes.string,
   connectSupported: PropTypes.bool,
-  uploadSupported: PropTypes.bool
+  uploadSupported: PropTypes.bool,
+  disableAuthLink: PropTypes.func
 };
 
 const mapStateToProps = ({ basiqConnect }) => basiqConnect;
