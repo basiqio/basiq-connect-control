@@ -24,6 +24,11 @@ const statementsUploaded = (statements) => {
           return statement.status === StatementStatus.SUCCESS;
         }));
 };
+const someStatementUploaded = (statements) => {
+  return statements.some(function(statement) {
+    return statement.status === StatementStatus.SUCCESS;
+  });
+}
 
 const statementsUploading = (statements) => {
   return statements.some(statement => statement.status === StatementStatus.UPLOADING);
@@ -56,8 +61,8 @@ const UploadStatementsPage = ({
       <div className="us-upload-stat-header">
         <div className="us-upload-stat-method-select-title">
           <span className="us-back-icon"
-            style={statementsUploading(statements) ? {color : "gray"} : null}
-            onClick={!statementsUploading(statements) ?
+            style={statementsUploading(statements) || someStatementUploaded(statements) ? {color : "gray", cursor: "auto"} : null}
+            onClick={!statementsUploading(statements) && !someStatementUploaded(statements) ?
               () => navigateToActionCreator(pages.SelectInstitutionPage) : null}>
             ‹
           </span>
