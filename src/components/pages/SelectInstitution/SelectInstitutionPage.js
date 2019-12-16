@@ -44,7 +44,7 @@ class SelectInstitutionPage extends React.Component {
         <div className="si-title">
           <span className="si-back-icon" onClick={() => connectSupported && uploadSupported ?
             navigateToActionCreator(pages.SelectMethodPage) :
-            navigateToActionCreator(pages.ConnectInstitutionPage)}>‹</span>
+            navigateToActionCreator(pages.ConnectedInstitutionsPage)}>‹</span>
           <p>Select your bank</p>
           <div style={{width:"38px"}}></div>
         </div>
