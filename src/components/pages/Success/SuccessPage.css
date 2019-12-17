@@ -24,4 +24,5 @@
   text-align: center;
   margin: 20px 60px 60px 60px;
   font-size: 17px;
+  overflow-wrap: break-word;
 }

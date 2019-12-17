@@ -6,3 +6,9 @@
   display: flex;
   flex-direction: column;
 }
+
+@media (min-height: 601px) and (min-width: 451px) {
+  .page-container {
+    overflow-y: auto;
+  }
+}
