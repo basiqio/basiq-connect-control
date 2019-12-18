@@ -19,12 +19,12 @@ class NumericCodeInputs extends React.Component {
 
   handleKeyDownPress(e, field, name) {
     let inputToBeSelected = null;
-    
-    if ((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) { // Numbers 0-9.
-      
+    if ((e.which >= 48 && e.which <= 57)) { // Numbers 0-9.
       this.props.changeSmsCode({ index: name[name.length - 1], value: String.fromCharCode(e.which) });
       inputToBeSelected = this.refs[field.name].nextSibling;
-
+    }if(e.which >= 96 && e.which <= 105){// Numbers 0-9 on numpad.
+      this.props.changeSmsCode({ index: name[name.length - 1], value: String.fromCharCode(e.which - 48) });
+      inputToBeSelected = this.refs[field.name].nextSibling;
     } else if (e.which === 8) { // Backspace.
       const index = parseInt(name[name.length - 1]);
 
