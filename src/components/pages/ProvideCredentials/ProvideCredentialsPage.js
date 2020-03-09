@@ -102,6 +102,9 @@ const ProvideCredentialsPage = ({
             )
           }
         />
+        <a href={selectedInstitution.forgottenPasswordUrl} target="_blank" rel="noopener noreferrer" className="pc-forgot-password">
+					Forgot your password?
+				</a>
       </div>
     </div>
   );
