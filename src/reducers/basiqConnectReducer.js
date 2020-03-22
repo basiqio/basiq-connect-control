@@ -33,6 +33,7 @@ export default (state = initialState, action) => {
       newState.institutionRegion = action.value.institutionRegion;
       newState.hideTestBanks = action.value.hideTestBanks;
       newState.hideBetaBanks = action.value.hideBetaBanks;
+      newState.linkId = action.value.linkId;
       break;
     case actionTypes.AUTH_REQUEST_ID_VALIDATION_FAILED:
       newState.error = action.value;

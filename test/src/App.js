@@ -6,9 +6,10 @@ class App extends React.Component {
   async componentDidMount(){
     
     BasiqConnect({containerId: "basiq-connect-container",
-      connectLinkId: "4c6638f4-06d6-413c-a8de-0c75e8e64ef5",
+      connectLinkId: "d75f5a1c-8292-492b-93e0-a80cd923d97c",
       regionOfInstitutions: "Australia",
-      hideBetaBanks: true
+      hideBetaBanks: false,
+      hideTestBanks: false
     });
     /*
     BasiqConnect({containerId: "basiq-connect-container",

@@ -47,5 +47,6 @@ export const initialState = {
   password: "",
   securityCode: "",
   statementsUploaded: false,
-  authenticationRequired: true
+  authenticationRequired: true,
+  linkId: ""
 };

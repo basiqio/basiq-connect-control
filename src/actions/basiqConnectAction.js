@@ -188,7 +188,8 @@ export const validateAuthRequestId = ({connectLink, connect, upload,
           authRequestId: connectLink,
           institutionRegion: institutionRegionValue,
           hideTestBanks: hideTestBanksValue,
-          hideBetaBanks: hideBetaBanksValue
+          hideBetaBanks: hideBetaBanksValue,
+          linkId: authRequestResponse.payload.link_id
         })
       );
       dispatch(fetchInstitutions(hideBetaBanks, institutionRegionValue))
@@ -317,10 +318,10 @@ export const verifySmsCode = (authRequestId, smsCode) => async dispatch => {
   }
 };
 
-export const disableAuthLink = () => async dispatch => {
+export const disableAuthLink = (linkId) => async dispatch => {
   dispatch(navigateToActionCreator(pages.SuccessPage));
   dispatch(authLinkDisableStarted());
-  const result = await apiService.disableAuthLink();
+  const result = await apiService.disableAuthLink(linkId);
   if (result.ok) {
     dispatch(authLinkDisableSuccess());
   }

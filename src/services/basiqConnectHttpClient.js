@@ -12,10 +12,10 @@
 
 import { doGet, doPost, doDelete } from "./genericHttpClient";
 
-const API_URL = "https://au-api.basiq.io";
-const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
-//const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
-//const DASHBOARD_API_URL = "https://c9joivz12f.execute-api.ap-southeast-2.amazonaws.com/Development/";
+//const API_URL = "https://au-api.basiq.io";
+//const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
+const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
+const DASHBOARD_API_URL = "https://c9joivz12f.execute-api.ap-southeast-2.amazonaws.com/Development/";
 
 let userToken = "";
 let authorizationHeader = {
@@ -44,12 +44,12 @@ export async function verifyAuthRequestId(authRequestId) {
   return await doGet(`${DASHBOARD_API_URL}client_auth/${authRequestId}`);
 }
 
-export async function disableAuthLink(){
+export async function disableAuthLink(linkId){
   const headers = {
     "Content-Type": "application/json",
     ...authorizationHeader
   };
-  return await doDelete(`${API_URL}/users/${userId}/auth_link`, null, null, headers);
+  return await doPut(`${API_URL}/users/${userId}/authlinks/${linkId}`, null, {enabled: "false"}, headers);
 }
 
 export async function invokeSmsVerificationCode(authRequestId) {
