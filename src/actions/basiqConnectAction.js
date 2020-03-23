@@ -22,12 +22,12 @@ const connectCredentialsValidationFailed = value => ({
   type: actionTypes.CONNECT_CREDENTIALS_VALIDATION_FAILED,
   value
 });
-const tokenValidationFailed =  ({value}) => ({ type: actionTypes.TOKEN_VALIDATION_FAILED, value });
+const tokenValidationFailed = ({ value }) => ({ type: actionTypes.TOKEN_VALIDATION_FAILED, value });
 const tokenValidationSucceded = value => ({ type: actionTypes.TOKEN_VALIDATION_SUCCEDED, value });
 
 const validateInputs = ({ selectedInstitution, loginId, password }) => {
   const errors = {};
-  
+
   if (!loginId) {
     errors["loginId"] = `You must provide ${selectedInstitution.loginIdCaption}`;
   }
@@ -66,13 +66,13 @@ export const fileRemoved = value => ({ type: actionTypes.FILE_REMOVED, value });
 
 export const fileAdded = value => ({ type: actionTypes.FILE_ADDED, value });
 
-export const authorizationFailed = () => ({type: actionTypes.AUTHORIZATION_FAILED});
+export const authorizationFailed = () => ({ type: actionTypes.AUTHORIZATION_FAILED });
 
-export const authLinkDisableStarted = () => ({type: actionTypes.AUTH_LINK_DISABLE_STARTED});
+export const authLinkDisableStarted = () => ({ type: actionTypes.AUTH_LINK_DISABLE_STARTED });
 
-export const authLinkDisableSuccess = () => ({type: actionTypes.AUTH_LINK_DISABLE_SUCCESS});
+export const authLinkDisableSuccess = () => ({ type: actionTypes.AUTH_LINK_DISABLE_SUCCESS });
 
-export const authLinkDisableFailed = () => ({type: actionTypes.AUTH_LINK_DISABLE_FAILED});
+export const authLinkDisableFailed = () => ({ type: actionTypes.AUTH_LINK_DISABLE_FAILED });
 
 export const connectMethodSelected = method => ({
   type: actionTypes.INPUT_METHOD_SELECTED,
@@ -143,62 +143,62 @@ export const uploadStatements = ({ statements }) => dispatch => {
   });
 };
 
-export const validateAuthRequestId = ({connectLink, connect, upload,
-  partnerName, institutionRegion, hideTestBanks, hideBetaBanks}) => async dispatch => {
+export const validateAuthRequestId = ({ connectLink, connect, upload,
+  partnerName, institutionRegion, hideTestBanks, hideBetaBanks }) => async dispatch => {
 
-  if (!connectLink) {
-    dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
-  } else {
-    const authRequestResponse = await apiService.verifyAuthRequestId(connectLink);
+    if (!connectLink) {
+      dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
+    } else {
+      const authRequestResponse = await apiService.verifyAuthRequestId(connectLink);
 
-    if (authRequestResponse.ok) {
+      if (authRequestResponse.ok) {
 
-      let connectValue = connect !== undefined ? connect : authRequestResponse.payload.partner.connectSupported;
-      let uploadValue = upload !== undefined ? upload : authRequestResponse.payload.partner.uploadSupported;
-    
-      if(!connectValue && !uploadValue){
-        connectValue = true;
-        uploadValue = false;
+        let connectValue = connect !== undefined ? connect : authRequestResponse.payload.partner.connectSupported;
+        let uploadValue = upload !== undefined ? upload : authRequestResponse.payload.partner.uploadSupported;
+
+        if (!connectValue && !uploadValue) {
+          connectValue = true;
+          uploadValue = false;
+        }
+
+        let partnerNameValue = "";
+
+        if (partnerName) {
+          partnerNameValue = partnerName;
+        } else {
+          partnerNameValue = authRequestResponse.payload.partner.name;
+        }
+
+        let institutionRegionValue = "Australia";
+
+        if (institutionRegion) {
+          institutionRegionValue = institutionRegion;
+        } else if (authRequestResponse.payload.partner.institutionRegion) {
+          institutionRegionValue = authRequestResponse.payload.partner.institutionRegion;
+        }
+        let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : authRequestResponse.payload.partner.hideTestBanks;
+        let hideBetaBanksValue = hideBetaBanks !== undefined ? hideBetaBanks : authRequestResponse.payload.partner.hideBetaBanks;
+
+        dispatch(
+          authRequestIdValidationSucceded({
+            partnerName: partnerNameValue,
+            connectSupported: connectValue,
+            uploadSupported: uploadValue,
+            mobile: authRequestResponse.payload.mobile,
+            authRequestId: connectLink,
+            institutionRegion: institutionRegionValue,
+            hideTestBanks: hideTestBanksValue,
+            hideBetaBanks: hideBetaBanksValue
+          })
+        );
+        dispatch(fetchInstitutions(hideBetaBanks, institutionRegionValue))
+        return;
       }
-
-      let partnerNameValue = "";
-
-      if(partnerName) {
-        partnerNameValue = partnerName;
-      } else {
-        partnerNameValue = authRequestResponse.payload.partner.name;
-      }
-
-      let institutionRegionValue = "Australia";
-
-      if (institutionRegion) {
-        institutionRegionValue = institutionRegion;
-      } else if (authRequestResponse.payload.partner.institutionRegion) {
-        institutionRegionValue = authRequestResponse.payload.partner.institutionRegion;
-      }
-      let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : authRequestResponse.payload.partner.hideTestBanks;
-      let hideBetaBanksValue = hideBetaBanks !== undefined ? hideBetaBanks : authRequestResponse.payload.partner.hideBetaBanks;
-
-      dispatch(
-        authRequestIdValidationSucceded({
-          partnerName: partnerNameValue,
-          connectSupported: connectValue,
-          uploadSupported: uploadValue,
-          mobile: authRequestResponse.payload.mobile,
-          authRequestId: connectLink,
-          institutionRegion: institutionRegionValue,
-          hideTestBanks: hideTestBanksValue,
-          hideBetaBanks: hideBetaBanksValue
-        })
-      );
-      dispatch(fetchInstitutions(hideBetaBanks, institutionRegionValue))
-      return;
+      dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
     }
-    dispatch(authRequestIdValidationFailed({ value: "Invalid link" }));
-  }
-};
+  };
 
-export const validateToken = ({token, userId, connect, upload, partnerName, institutionRegion, hideTestBanks, hideBetaBanks}) => async dispatch => {
+export const validateToken = ({ token, userId, connect, upload, partnerName, institutionRegion, hideTestBanks, hideBetaBanks }) => async dispatch => {
   const parsedJwt = parseJwt(token);
   const errorMessage = "Authorization failed";
   if (!parsedJwt) {
@@ -206,13 +206,13 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
   }
 
   const userRequestResponse = await apiService.getUser(token, userId);
-  if(userRequestResponse.ok) {
+  if (userRequestResponse.ok) {
     apiService.setToken(userId, token);
 
     let connectValue = connect !== undefined ? connect : false;
     let uploadValue = upload !== undefined ? upload : false;
 
-    if(!connectValue && !uploadValue){
+    if (!connectValue && !uploadValue) {
       connectValue = true;
       uploadValue = false;
     }
@@ -225,7 +225,7 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
     let hideTestBanksValue = hideTestBanks !== undefined ? hideTestBanks : false;
     let hideBetaBanksValue = hideBetaBanks !== undefined ? hideBetaBanks : false;
 
-    
+
     dispatch(tokenValidationSucceded({
       token,
       userId,
@@ -244,7 +244,7 @@ export const validateToken = ({token, userId, connect, upload, partnerName, inst
   }
 };
 
-export const showBankConnect = ({userId, accessToken, connectSupported, uploadSupported}) => dispatch => {
+export const showBankConnect = ({ userId, accessToken, connectSupported, uploadSupported }) => dispatch => {
   if (connectSupported && uploadSupported) {
     dispatch(navigateToActionCreator(pages.SelectMethodPage));
     return;
@@ -317,14 +317,14 @@ export const verifySmsCode = (authRequestId, smsCode) => async dispatch => {
   }
 };
 
-export const disableAuthLink = () => async dispatch => {
+export const disableAuthLink = (authRequestId) => async dispatch => {
   dispatch(navigateToActionCreator(pages.SuccessPage));
   dispatch(authLinkDisableStarted());
-  const result = await apiService.disableAuthLink();
+  const result = await apiService.disableAuthLink(authRequestId);
   if (result.ok) {
     dispatch(authLinkDisableSuccess());
   }
-  else{
+  else {
     dispatch(authLinkDisableFailed());
   }
 }
