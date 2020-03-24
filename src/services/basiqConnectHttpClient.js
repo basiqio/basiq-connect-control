@@ -10,12 +10,12 @@
  * All http communication in basiq-connect should be contianed in this module.
  */
 
-import { doGet, doPost, doDelete } from "./genericHttpClient";
+import { doGet, doPost, doPut } from "./genericHttpClient";
 
 const API_URL = "https://au-api.basiq.io";
 const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
-//const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
-//const DASHBOARD_API_URL = "https://c9joivz12f.execute-api.ap-southeast-2.amazonaws.com/Development/";
+// const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
+// const DASHBOARD_API_URL = "https://c9joivz12f.execute-api.ap-southeast-2.amazonaws.com/Development/";
 
 let userToken = "";
 let authorizationHeader = {
@@ -40,16 +40,16 @@ export function setToken(id, token) {
 }
 
 export async function verifyAuthRequestId(authRequestId) {
- 
+
   return await doGet(`${DASHBOARD_API_URL}client_auth/${authRequestId}`);
 }
 
-export async function disableAuthLink(){
+export async function disableAuthLink(authRequestId) {
   const headers = {
     "Content-Type": "application/json",
     ...authorizationHeader
   };
-  return await doDelete(`${API_URL}/users/${userId}/auth_link`, null, null, headers);
+  return await doPut(`${DASHBOARD_API_URL}client_auth/${authRequestId}`, null, null, headers);
 }
 
 export async function invokeSmsVerificationCode(authRequestId) {
@@ -91,11 +91,11 @@ export async function getUser(token, id) {
 }
 
 export async function getInstitutions(hideBetaBanks, institutionRegion) {
-  if(hideBetaBanks && institutionRegion){
+  if (hideBetaBanks && institutionRegion) {
     return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}')`);
-  } else if(institutionRegion){
+  } else if (institutionRegion) {
     return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.country.eq('${institutionRegion}')`);
-  } else if (hideBetaBanks){
+  } else if (hideBetaBanks) {
     return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.connectorStatus.eq('active')`);
   }
   return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user')`);

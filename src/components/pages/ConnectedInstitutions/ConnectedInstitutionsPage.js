@@ -33,41 +33,41 @@ const listItems = (institutionList) => institutionList.map((item, index) => (
 ));
 
 const ConnectedInstitutionsPage = ({ navigateToActionCreator, institutionList,
-  showBankConnect, userId, accessToken, connectSupported, uploadSupported, disableAuthLink }) => (
-  <div className="page-container">
+  showBankConnect, userId, accessToken, connectSupported, uploadSupported, disableAuthLink, authRequestId }) => (
+    <div className="page-container">
 
-    <div className="cdi-title">Connect to Bank</div>
+      <div className="cdi-title">Connect to Bank</div>
 
-    <div className="cdi-subtitle">Select the button below to connect your financial institutions.</div>
+      <div className="cdi-subtitle">Select the button below to connect your financial institutions.</div>
 
-    <div className="cdi-institution-list">{listItems(institutionList)}</div>
+      <div className="cdi-institution-list">{listItems(institutionList)}</div>
 
-    <div className="cdi-page-content">
-      <div className="cdi-centered-bold-text">
-        Do you bank with anyone else?
+      <div className="cdi-page-content">
+        <div className="cdi-centered-bold-text">
+          Do you bank with anyone else?
       </div>
-      <div className="cdi-text-button">
-        <span id="cdi-show-bank-connect-button"
-          onClick={() => showBankConnect({userId, accessToken, connectSupported, uploadSupported})}>
-          Connect another bank
+        <div className="cdi-text-button">
+          <span id="cdi-show-bank-connect-button"
+            onClick={() => showBankConnect({ userId, accessToken, connectSupported, uploadSupported })}>
+            Connect another bank
         </span>
+        </div>
       </div>
-    </div>
 
-    <div className="cdi-footnote-bottom">
-      <div className="cdi-footnote-text">
-        <img
-          className="cdi-footnote-icon"
-          src={ShieldIcon}
-          alt="Shiled icon"
-        />
-        Your data is protected using 256-bit encryption.
+      <div className="cdi-footnote-bottom">
+        <div className="cdi-footnote-text">
+          <img
+            className="cdi-footnote-icon"
+            src={ShieldIcon}
+            alt="Shiled icon"
+          />
+          Your data is protected using 256-bit encryption.
       </div>
-      <MainButton id="cdi-inst-list-button"
-        onClick={disableAuthLink} text="I have disclosed all banks" />
+        <MainButton id="cdi-inst-list-button"
+          onClick={() => disableAuthLink(authRequestId)} text="I have disclosed all banks" />
+      </div>
     </div>
-  </div>
-);
+  );
 
 ConnectedInstitutionsPage.propTypes = {
   navigateToActionCreator: PropTypes.func,
@@ -77,7 +77,8 @@ ConnectedInstitutionsPage.propTypes = {
   accessToken: PropTypes.string,
   connectSupported: PropTypes.bool,
   uploadSupported: PropTypes.bool,
-  disableAuthLink: PropTypes.func
+  disableAuthLink: PropTypes.func,
+  authRequestId: PropTypes.string
 };
 
 const mapStateToProps = ({ basiqConnect }) => basiqConnect;
