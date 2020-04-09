@@ -220,7 +220,8 @@ export function addJobStatusChangedCallback(connectionJobId, jobStatusChangedCal
 
     const newCurrentStatus = response.payload.steps.map(step => ({
       title: step.title,
-      status: step.status
+      status: step.status,
+      result: step.result
     }));
 
     if (!areStepsEqual(stepsStatus, newCurrentStatus)) {

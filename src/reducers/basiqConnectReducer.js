@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
       break;
     case actionTypes.INSITUTION_CONNECTED:
       if (
-        newState.institutionList.find(function(institution) {
+        newState.institutionList.find(function (institution) {
           return institution.name === newState.selectedInstitution.shortName;
         }) == null
       ) {
@@ -138,7 +138,7 @@ export default (state = initialState, action) => {
       break;
     case actionTypes.UPLOAD_PAGE_FINISHED:
       if (
-        newState.institutionList.find(function(institution) {
+        newState.institutionList.find(function (institution) {
           return institution.name === newState.selectedInstitution.shortName;
         }) == null
       ) {
@@ -174,7 +174,7 @@ export default (state = initialState, action) => {
     case actionTypes.BANK_CONNECT_FINISHED:
       if (newState.connectResult === ConnectResult.SUCCESS) {
         if (
-          newState.institutionList.find(function(institution) {
+          newState.institutionList.find(function (institution) {
             return institution.name === newState.selectedInstitution.shortName;
           }) == null
         ) {
@@ -201,8 +201,7 @@ export default (state = initialState, action) => {
       break;
     case actionTypes.VERIFY_CREDENTIALS_FAILED:
       newState.currentPage = pages.ProvideCredentialsPage;
-      newState.error =
-        "Cannot login to target institution using supplied credentials. Please check credentials and try again.";
+      newState.error = action.value;
       break;
     case actionTypes.LOGIN_ID_CHANGED:
       newState.loginId = action.value;
