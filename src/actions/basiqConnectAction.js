@@ -48,7 +48,7 @@ export const institutionSelected = value => ({ type: actionTypes.INSTITUTION_SEL
 
 export const bankConnectFinished = () => ({ type: actionTypes.BANK_CONNECT_FINISHED });
 
-export const verifyCredentialsFailed = () => ({ type: actionTypes.VERIFY_CREDENTIALS_FAILED });
+export const verifyCredentialsFailed = (value) => ({ type: actionTypes.VERIFY_CREDENTIALS_FAILED, value });
 
 export const loginIdChanged = value => ({ type: actionTypes.LOGIN_ID_CHANGED, value });
 
@@ -110,7 +110,12 @@ export const connectToBank = (
     }
     if (verifyCredentialsStep && verifyCredentialsStep.status === "failed") {
       abortController.abort();
-      dispatch(verifyCredentialsFailed());
+      if (verifyCredentialsStep.result.code === "account-not-accessible-requires-user-action") {
+        dispatch(verifyCredentialsFailed("An action is required from user before account details can be returned."));
+      }
+      else {
+        dispatch(verifyCredentialsFailed("Cannot login to target institution using supplied credentials. Please check credentials and try again."));
+      }
     }
     if (status.jobStatus === "failed" || status.jobStatus === "timeout") {
       dispatch(bankConnectFailed());
