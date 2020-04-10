@@ -111,7 +111,7 @@ export const connectToBank = (
     if (verifyCredentialsStep && verifyCredentialsStep.status === "failed") {
       abortController.abort();
       if (verifyCredentialsStep.result.code === "account-not-accessible-requires-user-action") {
-        dispatch(verifyCredentialsFailed(verifyCredentialsStep.result.detail));
+        dispatch(verifyCredentialsFailed("An action is required from user before account details can be returned."));
       }
       else {
         dispatch(verifyCredentialsFailed("Cannot login to target institution using supplied credentials. Please check credentials and try again."));
