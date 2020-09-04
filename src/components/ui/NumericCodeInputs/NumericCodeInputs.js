@@ -22,7 +22,7 @@ class NumericCodeInputs extends React.Component {
     
     if ((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) { // Numbers 0-9.
       
-      this.props.changeSmsCode({ index: name[name.length - 1], value: String.fromCharCode(e.which) });
+      this.props.changeSmsCode({ index: name[name.length - 1], value: +e.key });
       inputToBeSelected = this.refs[field.name].nextSibling;
 
     } else if (e.which === 8) { // Backspace.
