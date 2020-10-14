@@ -16,13 +16,8 @@
   font-size: 24px;
   color: #343434;
   font-weight: 200;
-  margin-top: 20px;
   margin-left: 20px;
   display: flex;
-}
-
-.us-upload-stat-method-select-title > p {
-  margin: auto;
 }
 
 .us-upload-stat-upload-container {
@@ -50,8 +45,8 @@
 }
 
 #us-upload-bank-logo {
-  width: 130px;
-  height: 30px;
+  width: 50%;
+  max-height: 90px;
   margin-top: 20px;
   margin-right: 20px;
   margin-bottom: 10px;
@@ -69,7 +64,7 @@
   font-size: 50px;
   position: relative;
   line-height: 0px;
-  top: 15px;
+  top: 35px;
 }
 
 #us-continue-button, #us-upload-button {
