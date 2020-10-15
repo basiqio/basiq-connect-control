@@ -18,6 +18,7 @@
   font-weight: 200;
   margin-left: 20px;
   display: flex;
+  width: 40%;
 }
 
 .us-upload-stat-upload-container {
@@ -46,6 +47,7 @@
 
 #us-upload-bank-logo {
   width: 50%;
+  height: 80%;
   max-height: 90px;
   margin-top: 20px;
   margin-right: 20px;
