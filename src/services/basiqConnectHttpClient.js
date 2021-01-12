@@ -14,7 +14,7 @@ import { doGet, doPost, doPut } from "./genericHttpClient";
 
 const API_URL = "https://au-api.basiq.io";
 const DASHBOARD_API_URL = "https://p4c8zn20r9.execute-api.ap-southeast-2.amazonaws.com/Production_v1/";
-// const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development/";
+// const API_URL = "https://27ghl0gdic.execute-api.ap-southeast-2.amazonaws.com/Development";
 // const DASHBOARD_API_URL = "https://c9joivz12f.execute-api.ap-southeast-2.amazonaws.com/Development/";
 
 let userToken = "";
@@ -92,13 +92,13 @@ export async function getUser(token, id) {
 
 export async function getInstitutions(hideBetaBanks, institutionRegion) {
   if (hideBetaBanks && institutionRegion) {
-    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}')`);
+    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}')`);
   } else if (institutionRegion) {
-    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.country.eq('${institutionRegion}')`);
+    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha'),institution.country.eq('${institutionRegion}')`);
   } else if (hideBetaBanks) {
-    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.connectorStatus.eq('active')`);
+    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha'),institution.connectorStatus.eq('active')`);
   }
-  return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user')`);
+  return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha')`);
 }
 
 export async function createConnection(institutionId, loginId, password, securityCode, secondaryLoginId) {
