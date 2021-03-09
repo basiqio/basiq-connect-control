@@ -1,6 +1,6 @@
 {
   "name": "@basiq/basiq-connect-control",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "main": "dist/main.js",
   "files": [
     "dist/*"

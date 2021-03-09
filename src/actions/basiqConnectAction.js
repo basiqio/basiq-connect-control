@@ -114,7 +114,7 @@ export const connectToBank = (
         dispatch(verifyCredentialsFailed("An action is required from user before account details can be returned."));
       }
       else {
-        dispatch(verifyCredentialsFailed("Cannot login to target institution using supplied credentials. Please check credentials and try again."));
+        dispatch(verifyCredentialsFailed(verifyCredentialsStep.result.detail));
       }
     }
     if (status.jobStatus === "failed" || status.jobStatus === "timeout") {
