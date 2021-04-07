@@ -1,54 +1,54 @@
 {
-  "name": "@basiq/basiq-connect-control",
-  "version": "1.0.43",
-  "main": "dist/main.js",
-  "files": [
-    "dist/*"
-  ],
-  "dependencies": {
-    "css-element-queries": "^1.2.1",
-    "react-redux": "^7.0.1",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
-  },
-  "scripts": {
-    "start-test": "npm run build && cd test && npm install && react-scripts start",
-    "build": "webpack -d --config webpack.config.js",
-    "build-prod": "webpack -p --config webpack.config.js",
-    "lint": "eslint 'src/**/*.js'",
-    "prepublishOnly": "npm run build-prod"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-styled-components": "^1.10.6",
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
-    "image-webpack-loader": "^5.0.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "^3.1.0",
-    "webpack": "4.39.1",
-    "webpack-cli": "^3.3.0",
-    "webpack-bundle-analyzer": "^3.4.1",
-    "url-loader": "^2.1.0"
-  },
-  "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-app-polyfill": "^1.0.2",
-    "core-js": "^3.2.0"
-  }
+	"name": "@basiq/basiq-connect-control",
+	"version": "1.0.44",
+	"main": "dist/main.js",
+	"files": [
+		"dist/*"
+	],
+	"dependencies": {
+		"css-element-queries": "^1.2.1",
+		"react-redux": "^7.0.1",
+		"redux": "^4.0.1",
+		"redux-thunk": "^2.3.0"
+	},
+	"scripts": {
+		"start-test": "npm run build && cd test && npm install && react-scripts start",
+		"build": "webpack -d --config webpack.config.js",
+		"build-prod": "webpack -p --config webpack.config.js",
+		"lint": "eslint 'src/**/*.js'",
+		"prepublishOnly": "npm run build-prod"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"@babel/core": "^7.5.5",
+		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"@babel/preset-react": "^7.0.0",
+		"babel-loader": "^8.0.6",
+		"babel-plugin-styled-components": "^1.10.6",
+		"css-loader": "^3.2.0",
+		"file-loader": "^4.2.0",
+		"image-webpack-loader": "^5.0.0",
+		"react": "^16.9.0",
+		"react-dom": "^16.9.0",
+		"react-scripts": "^3.1.0",
+		"webpack": "4.39.1",
+		"webpack-cli": "^3.3.0",
+		"webpack-bundle-analyzer": "^3.4.1",
+		"url-loader": "^2.1.0"
+	},
+	"peerDependencies": {
+		"react": "^16.9.0",
+		"react-dom": "^16.9.0",
+		"react-app-polyfill": "^1.0.2",
+		"core-js": "^3.2.0"
+	}
 }
