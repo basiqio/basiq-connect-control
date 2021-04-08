@@ -90,7 +90,7 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
 	const response = await apiService.createConnection(institutionId, loginId, password, securityCode, secondaryLoginId);
 
 	if (!response.ok) {
-		dispatch(bankConnectFailed(response.errors[0].code));
+		dispatch(bankConnectFailed(response.errors[0]));
 		return;
 	}
 

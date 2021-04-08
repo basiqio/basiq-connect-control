@@ -28,9 +28,13 @@ const ConnectResultPage = ({ connectResult, bankConnectFinished, navigateToActio
 	} else if (connectResult === ConnectResult.FAILURE) {
 		title = 'Error';
 		illustration = <img style={{ width: '96px' }} src={failureImage} alt="Failure" />;
-		if (connectError === 'access-denied') {
-			subtitle = 'Session has timed out. (Error 403)';
-			subtitle2 = 'Please verify your phone number again.';
+		if (connectError && connectError.code === 'access-denied') {
+			if (connectError.detail === 'Token has expired') {
+				subtitle = 'Session has timed out. (Error 403)';
+				subtitle2 = 'Please verify your phone number again.';
+			} else {
+				subtitle = connectError.detail;
+			}
 		} else {
 			subtitle = 'Error connecting to bank.';
 		}
@@ -69,7 +73,13 @@ const ConnectResultPage = ({ connectResult, bankConnectFinished, navigateToActio
 					id="cr-continue-button"
 					disabled={connectResult === ConnectResult.PENDING}
 					text="Continue"
-					onClick={() => bankConnectFinished()}
+					onClick={() => {
+						if (connectError && connectError.code === 'access-denied' && connectError.detail === 'Token has expired') {
+							window.location.reload();
+						} else {
+							bankConnectFinished();
+						}
+					}}
 				/>
 			</div>
 		</div>
