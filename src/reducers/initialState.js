@@ -48,5 +48,9 @@ export const initialState = {
 	securityCode: '',
 	statementsUploaded: false,
 	authenticationRequired: true,
-	connectError: ''
+	connectError: '',
+	mfaInputs: {},
+	otpPassword: '',
+	mfaChallengeStep: {},
+	mfaRequestSent: false
 };

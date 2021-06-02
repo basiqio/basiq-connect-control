@@ -11,6 +11,12 @@ export default (state = initialState, action) => {
 			if (newState.currentPage === pages.TermsOfServicePage) {
 				newState.smsCode = ['', '', '', ''];
 			}
+			if (newState.currentPage === pages.MfaPage && state.error) {
+				newState.error = state.error;
+				newState.mfaRequestSent = false;
+			} else {
+				newState.error = '';
+			}
 			newState.loginIdError = '';
 			newState.passwordError = '';
 			newState.securityCodeError = '';
@@ -19,7 +25,6 @@ export default (state = initialState, action) => {
 			newState.password = '';
 			newState.securityCode = '';
 			newState.secondaryLoginId = '';
-			newState.error = '';
 			newState.statements = [];
 			break;
 		case actionTypes.AUTH_REQUEST_ID_VALIDATION_SUCCEDED:
@@ -164,9 +169,17 @@ export default (state = initialState, action) => {
 			newState.securityCodeError = '';
 			newState.secondaryLoginIdError = '';
 			newState.error = '';
+			newState.mfaChallengeStep = {};
+			newState.mfaRequestSent = false;
+			newState.sendingMfaResponse = false;
+			newState.mfaInputs = {};
 			break;
 		case actionTypes.BANK_CONNECT_SUCCEDED:
 			newState.connectResult = ConnectResult.SUCCESS;
+			newState.mfaChallengeStep = {};
+			newState.mfaRequestSent = false;
+			newState.sendingMfaResponse = false;
+			newState.mfaInputs = {};
 			break;
 		case actionTypes.BANK_CONNECT_FAILED:
 			newState.connectResult = ConnectResult.FAILURE;
@@ -257,6 +270,34 @@ export default (state = initialState, action) => {
 			newState.error = 'Authorization failed';
 			newState.currentPage = pages.InvalidUrlPage;
 			break;
+		case actionTypes.MFA_INPUT_CHANGED:
+			newState.otpPassword = action.value.input;
+			newState.mfaInputs[action.value.index] = action.value.input;
+			break;
+		case actionTypes.MFA_REQUIRED:
+			newState.mfaChallengeStep = action.value;
+			newState.currentPage = pages.MfaPage;
+			action.value.input.forEach((question, i) => {
+				newState.mfaInputs[i] = '';
+			});
+			break;
+		case actionTypes.MFA_STARTED:
+			newState.sendingMfaResponse = true;
+			break;
+		case actionTypes.MFA_FAILED:
+			newState.sendingMfaResponse = false;
+			if (state.mfaChallengeStep.method === 'token') {
+				newState.error = 'Oops, the code entered doesn’t appear to be valid.';
+			} else {
+				newState.error = 'Oops, the answer entered doesn’t appear to be valid.';
+			}
+			break;
+		case actionTypes.MFA_SUCCESS:
+			newState.sendingMfaResponse = false;
+			newState.mfaRequestSent = true;
+			newState.error = '';
+			newState.mfaInputs = {};
+			newState.mfaChallengeStep = {};
 		default:
 			break;
 	}

@@ -178,7 +178,7 @@ export class JobStatusChangedAbortController {
  * Otherwise, if any of steps have status 'in-progress' or 'pending', job status is 'in-progress'.
  * If timeout happens, jobStatus is 'timeout'.
  */
-export function addJobStatusChangedCallback(connectionJobId, jobStatusChangedCallback) {
+export function addJobStatusChangedCallback(connectionJobId, getState, jobStatusChangedCallback) {
 	function areStepsEqual(status1, status2) {
 		if (status1.length !== status2.length) {
 			return false;
@@ -218,6 +218,7 @@ export function addJobStatusChangedCallback(connectionJobId, jobStatusChangedCal
 
 	intervalId = setInterval(async () => {
 		const response = await checkJobStatus(connectionJobId);
+		const { mfaRequestSent } = getState().basiqConnect;
 
 		if (!response.ok) {
 			return;
@@ -234,7 +235,7 @@ export function addJobStatusChangedCallback(connectionJobId, jobStatusChangedCal
 			const jobStatus = calculateJobStatus(stepsStatus);
 
 			if (intervalId !== 0) {
-				jobStatusChangedCallback({ jobStatus, stepsStatus });
+				jobStatusChangedCallback({ jobStatus, stepsStatus, mfaRequestSent });
 			}
 
 			if (jobStatus === 'success' || jobStatus === 'failure') {
@@ -243,9 +244,14 @@ export function addJobStatusChangedCallback(connectionJobId, jobStatusChangedCal
 			}
 		}
 
+		if (mfaRequestSent) {
+			const jobStatus = calculateJobStatus(stepsStatus);
+			jobStatusChangedCallback({ jobStatus, stepsStatus, mfaRequestSent });
+		}
+
 		if (fetchNum >= FETCH_NUM_TIMEOUT) {
 			if (intervalId !== 0) {
-				jobStatusChangedCallback({ jobStatus: 'timeout', stepsStatus });
+				jobStatusChangedCallback({ jobStatus: 'timeout', stepsStatus, mfaRequestSent });
 			}
 
 			clearInterval(intervalId);
@@ -255,4 +261,14 @@ export function addJobStatusChangedCallback(connectionJobId, jobStatusChangedCal
 	}, FETCH_INTERVAL);
 
 	return new JobStatusChangedAbortController(intervalId);
+}
+
+export async function postMfaResponse(url, mfaResponse) {
+	const headers = {
+		...authorizationHeader
+	};
+
+	const body = { 'mfa-response': mfaResponse };
+
+	return await doPost(url, null, body, headers);
 }
