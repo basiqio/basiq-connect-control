@@ -38,6 +38,8 @@ const validateInputs = ({ selectedInstitution, loginId, password }) => {
 	return { valid: Object.keys(errors).length === 0, errors };
 };
 
+const mfaRequired = (value) => ({ type: actionTypes.MFA_REQUIRED, value });
+
 export const navigateToActionCreator = (value) => ({ type: actionTypes.NAVIGATE_TO, value });
 
 export const smsCodeChangedActionCreator = (value) => ({ type: actionTypes.SMS_CODE_CHANGED, value });
@@ -74,12 +76,23 @@ export const authLinkDisableSuccess = () => ({ type: actionTypes.AUTH_LINK_DISAB
 
 export const authLinkDisableFailed = () => ({ type: actionTypes.AUTH_LINK_DISABLE_FAILED });
 
+export const mfaInputChanged = (value) => ({ type: actionTypes.MFA_INPUT_CHANGED, value });
+
+export const mfaStarted = () => ({ type: actionTypes.MFA_STARTED });
+
+export const mfaSuccess = () => ({ type: actionTypes.MFA_SUCCESS });
+
+export const mfaFailed = () => ({ type: actionTypes.MFA_FAILED });
+
 export const connectMethodSelected = (method) => ({
 	type: actionTypes.INPUT_METHOD_SELECTED,
 	value: { method, page: pages.SelectInstitutionPage }
 });
 
-export const connectToBank = (selectedInstitution, institutionId, loginId, password, securityCode, secondaryLoginId) => async (dispatch) => {
+export const connectToBank = (selectedInstitution, institutionId, loginId, password, securityCode, secondaryLoginId) => async (
+	dispatch,
+	getState
+) => {
 	const { valid, errors } = validateInputs({ selectedInstitution, loginId, password });
 	if (!valid) {
 		dispatch(connectCredentialsValidationFailed(errors));
@@ -94,12 +107,20 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
 		return;
 	}
 
-	const abortController = apiService.addJobStatusChangedCallback(response.payload.id, (status) => {
+	const abortController = apiService.addJobStatusChangedCallback(response.payload.id, getState, (status) => {
 		const verifyCredentialsStep = status.stepsStatus.find((stepStatus) => stepStatus.title === 'verify-credentials');
-		if (verifyCredentialsStep && verifyCredentialsStep.status === 'success') {
-			abortController.abort();
-			dispatch(bankConnectSucceded());
-			return;
+		const mfaChallengeStep = status.stepsStatus.find((stepStatus) => stepStatus.title === 'mfa-challenge');
+		if (mfaChallengeStep) {
+			if (mfaChallengeStep.status === 'skipped' || mfaChallengeStep.status === 'success') {
+				abortController.abort();
+				dispatch(bankConnectSucceded());
+				return;
+			} else if (mfaChallengeStep.status === 'in-progress' && !status.mfaRequestSent) {
+				dispatch(mfaRequired(mfaChallengeStep.result));
+			} else if ((mfaChallengeStep.status === 'in-progress' && status.mfaRequestSent) || mfaChallengeStep.status === 'failed') {
+				dispatch(mfaFailed());
+				dispatch(navigateToActionCreator(pages.MfaPage));
+			}
 		}
 		if (verifyCredentialsStep && verifyCredentialsStep.status === 'failed') {
 			abortController.abort();
@@ -110,7 +131,15 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
 			}
 		}
 		if (status.jobStatus === 'failed' || status.jobStatus === 'timeout') {
+			abortController.abort();
 			dispatch(bankConnectFailed());
+			dispatch(navigateToActionCreator(pages.ConnectResultPage));
+			return;
+		} else if (status.jobStatus === 'success') {
+			abortController.abort();
+			dispatch(bankConnectSucceded());
+			dispatch(navigateToActionCreator(pages.ConnectResultPage));
+			return;
 		}
 	});
 };
@@ -324,5 +353,16 @@ export const disableAuthLink = (authRequestId) => async (dispatch) => {
 		dispatch(authLinkDisableSuccess());
 	} else {
 		dispatch(authLinkDisableFailed());
+	}
+};
+
+export const sendMfaRequest = (url, mfaResponse) => async (dispatch) => {
+	dispatch(mfaStarted());
+	const result = await apiService.postMfaResponse(url, mfaResponse);
+	if (result.ok) {
+		dispatch(mfaSuccess());
+		dispatch(navigateToActionCreator(pages.ConnectResultPage));
+	} else {
+		dispatch(mfaFailed());
 	}
 };

@@ -31,99 +31,101 @@
  */
 
 export class HttpResponse {
-  constructor() {
-    this.ok = false;
-    this.status = 0;
-    this.error = null;
-    this.payload = null;
-  }
+	constructor() {
+		this.ok = false;
+		this.status = 0;
+		this.error = null;
+		this.payload = null;
+	}
 }
 
 async function doHttp(url, method, mappingFunction, body, headers) {
-  try {
-    let requestConfig = { method };
+	try {
+		let requestConfig = { method };
 
-    if (headers) {
-      requestConfig = { ...requestConfig, headers };
-    }
+		if (headers) {
+			requestConfig = { ...requestConfig, headers };
+		}
 
-    if (body) {
-      if (body instanceof FormData) {
-        requestConfig = { ...requestConfig, body };
-      } else {
-        requestConfig = { ...requestConfig, body: JSON.stringify(body) };
-      }
-    }
+		if (body) {
+			if (body instanceof FormData) {
+				requestConfig = { ...requestConfig, body };
+			} else {
+				requestConfig = { ...requestConfig, body: JSON.stringify(body) };
+			}
+		}
 
-    const fetchResponse = await fetch(url, requestConfig);
+		const fetchResponse = await fetch(url, requestConfig);
 
-    const response = new HttpResponse();
+		const response = new HttpResponse();
 
-    response.ok = fetchResponse.ok;
-    response.status = fetchResponse.status;
+		response.ok = fetchResponse.ok;
+		response.status = fetchResponse.status;
 
-    let deserializedFetchResponseBody = null;
+		let deserializedFetchResponseBody = null;
 
-    const contentType = fetchResponse.headers.get("Content-Type");
+		const contentType = fetchResponse.headers.get('Content-Type');
 
-    if (contentType) {
-      if (contentType.indexOf("application/json") !== -1) {
-        const bodyText = await fetchResponse.text();
-        if (bodyText.length !== 0) {
-          deserializedFetchResponseBody = JSON.parse(bodyText);
-        }
-        deserializedFetchResponseBody = JSON.parse(bodyText);
-      } else if (contentType.indexOf("text/plain") !== -1) {
-        deserializedFetchResponseBody = await fetchResponse.text();
-      } else {
-        deserializedFetchResponseBody = await fetchResponse.blob();
-      }
-    }
+		if (contentType) {
+			if (contentType.indexOf('application/json') !== -1) {
+				const bodyText = await fetchResponse.text();
+				if (bodyText.length !== 0) {
+					deserializedFetchResponseBody = JSON.parse(bodyText);
+				}
+				deserializedFetchResponseBody = JSON.parse(bodyText);
+			} else if (contentType.indexOf('text/plain') !== -1) {
+				deserializedFetchResponseBody = await fetchResponse.text();
+			} else {
+				deserializedFetchResponseBody = await fetchResponse.blob();
+			}
+		}
 
-    if (response.ok) {
-      if (!mappingFunction || typeof mappingFunction !== "function") {
-        mappingFunction = param => param;
-      }
+		if (response.ok) {
+			if (!mappingFunction || typeof mappingFunction !== 'function') {
+				mappingFunction = (param) => param;
+			}
 
-      response.payload = mappingFunction(deserializedFetchResponseBody);
-    } else {
-      response.errors = deserializedFetchResponseBody.data.map(error => ({
-        code: error.code,
-        title: error.title,
-        detail: error.detail,
-      }));
-    }
+			response.payload = mappingFunction(deserializedFetchResponseBody);
+		} else {
+			response.errors = deserializedFetchResponseBody.data.map((error) => ({
+				code: error.code,
+				title: error.title,
+				detail: error.detail
+			}));
+		}
 
-    return response;
-  } catch (ex) {
-    const response = new HttpResponse();
+		return response;
+	} catch (ex) {
+		const response = new HttpResponse();
 
-    response.errors = [{
-      code: ["internal-javascript-error"],
-      title: ex.message,
-      detail: null
-    }];
+		response.errors = [
+			{
+				code: ['internal-javascript-error'],
+				title: ex.message,
+				detail: null
+			}
+		];
 
-    if (ex.fileName && ex.lineNumber) {
-      response.errors[0].detail = `${ex.fileName}:${ex.lineNumber}`;
-    }
+		if (ex.fileName && ex.lineNumber) {
+			response.errors[0].detail = `${ex.fileName}:${ex.lineNumber}`;
+		}
 
-    return response;
-  }
+		return response;
+	}
 }
 
 export async function doGet(url, mappingFunction, headers) {
-  return await doHttp(url, "GET", mappingFunction, null, headers);
+	return await doHttp(url, 'GET', mappingFunction, null, headers);
 }
 
 export async function doPost(url, mappingFunction, body, headers) {
-  return await doHttp(url, "POST", mappingFunction, body, headers);
+	return await doHttp(url, 'POST', mappingFunction, body, headers);
 }
 
 export async function doPut(url, mappingFunction, body, headers) {
-  return await doHttp(url, "PUT", mappingFunction, body, headers);
+	return await doHttp(url, 'PUT', mappingFunction, body, headers);
 }
 
 export async function doDelete(url, mappingFunction, body, headers) {
-  return await doHttp(url, "DELETE", mappingFunction, body, headers);
+	return await doHttp(url, 'DELETE', mappingFunction, body, headers);
 }
