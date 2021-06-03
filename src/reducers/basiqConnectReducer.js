@@ -296,8 +296,6 @@ export default (state = initialState, action) => {
 			newState.sendingMfaResponse = false;
 			newState.mfaRequestSent = true;
 			newState.error = '';
-			newState.mfaInputs = {};
-			newState.mfaChallengeStep = {};
 		default:
 			break;
 	}

@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 import * as actions from '../../../actions/basiqConnectAction';
 
-import pages from '../index.js';
-
 import MainButton from '../../ui/MainButton/MainButton';
 import InputField from '../../ui/InputField/InputField';
 
@@ -14,7 +12,14 @@ import './MfaPage.css';
 
 const MfaPage = ({ selectedInstitution, mfaInputs, mfaInputChanged, mfaChallengeStep, sendMfaRequest, sendingMfaResponse, mobile }) => {
 	return (
-		<div className="page-container" onKeyPress={(e) => (e.which === 13 ? () => {} : null)}>
+		<div
+			className="page-container"
+			onKeyPress={(e) => {
+				if (e.which === 13) {
+					e.preventDefault();
+					sendMfaRequest(mfaChallengeStep.links.response, Object.values(mfaInputs));
+				}
+			}}>
 			<span className="pc-title">
 				<p>Login</p>
 				<div style={{ width: '38px' }}></div>
