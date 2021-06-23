@@ -96,18 +96,18 @@ export async function getUser(token, id) {
 export async function getInstitutions(hideBetaBanks, institutionRegion) {
     if (hideBetaBanks && institutionRegion) {
         return await doGet(
-            `${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}')`
+            `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}'),institution.authorization.in('user', 'user-mfa-intermittent')`
         );
     } else if (institutionRegion) {
         return await doGet(
-            `${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha'),institution.country.eq('${institutionRegion}')`
+            `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.country.eq('${institutionRegion}'),institution.authorization.in('user', 'user-mfa-intermittent')`
         );
     } else if (hideBetaBanks) {
         return await doGet(
-            `${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha'),institution.connectorStatus.eq('active')`
+            `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),institution.authorization.in('user', 'user-mfa-intermittent')`
         );
     }
-    return await doGet(`${API_URL}/public/institutions?filter=institution.authorization.eq('user'),institution.stage.ne('alpha')`);
+    return await doGet(`${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.authorization.in('user', 'user-mfa-intermittent')`);
 }
 
 export async function createConnection(institutionId, loginId, password, securityCode, secondaryLoginId) {
