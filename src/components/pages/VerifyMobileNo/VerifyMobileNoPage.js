@@ -27,7 +27,7 @@ const VerifyMobileNoPage = ({ mobile, smsCode, smsCodeValid, resendSmsCodeVerifi
         verifySmsCodeExecute={verifySmsCode}
         authRequestId={authRequestId}
         hideBetaBanks={hideBetaBanks}
-        nstitutionRegion={institutionRegion}
+        institutionRegion={institutionRegion}
       />
 
       <div className="vm-footnote-bottom">
