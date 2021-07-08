@@ -19,9 +19,9 @@ class NumericCodeInputs extends React.Component {
 
   handleKeyDownPress(e, field, name) {
     let inputToBeSelected = null;
-    
+
     if ((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) { // Numbers 0-9.
-      
+
       this.props.changeSmsCode({ index: name[name.length - 1], value: +e.key });
       inputToBeSelected = this.refs[field.name].nextSibling;
 
@@ -40,7 +40,7 @@ class NumericCodeInputs extends React.Component {
     } else if (e.which === 39) { // Right.
       inputToBeSelected = this.refs[field.name].nextSibling;
     } else if (e.which === 13 && this.props.smsCodeValid) { // Enter.
-      this.props.verifySmsCodeExecute(this.props.authRequestId, this.props.smsCode.join(""));
+      this.props.verifySmsCodeExecute(this.props.authRequestId, this.props.smsCode.join(""), this.props.hideBetaBanks, this.props.institutionRegion);
     }
 
     if (inputToBeSelected && inputToBeSelected.tagName === "INPUT") {

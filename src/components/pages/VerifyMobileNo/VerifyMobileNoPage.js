@@ -11,29 +11,31 @@ import NumericCodeInputs from "../../ui/NumericCodeInputs/NumericCodeInputs";
 import "./VerifyMobileNoPage.css";
 
 const VerifyMobileNoPage = ({ mobile, smsCode, smsCodeValid, resendSmsCodeVerification,
-  smsCodeChangedActionCreator, sendingSmsCode, verifySmsCode, authRequestId }) => (
-  <div className="page-container">
-    <span className="vm-title">Verify Mobile Number</span>
+  smsCodeChangedActionCreator, sendingSmsCode, verifySmsCode, authRequestId, hideBetaBanks, institutionRegion }) => (
+    <div className="page-container">
+      <span className="vm-title">Verify Mobile Number</span>
 
-    <div className="vm-subtitle">
-      Please enter the SMS code sent to your mobile number (ending xxx{mobile}).
+      <div className="vm-subtitle">
+        Please enter the SMS code sent to your mobile number (ending xxx{mobile}).
     </div>
 
-    <NumericCodeInputs
-      smsCode={smsCode}
-      smsCodeValid={smsCodeValid}
-      resendSmsCodeVerification={resendSmsCodeVerification}
-      changeSmsCode={smsCodeChangedActionCreator}
-      verifySmsCodeExecute={verifySmsCode}
-      authRequestId={authRequestId}
-    />
+      <NumericCodeInputs
+        smsCode={smsCode}
+        smsCodeValid={smsCodeValid}
+        resendSmsCodeVerification={resendSmsCodeVerification}
+        changeSmsCode={smsCodeChangedActionCreator}
+        verifySmsCodeExecute={verifySmsCode}
+        authRequestId={authRequestId}
+        hideBetaBanks={hideBetaBanks}
+        institutionRegion={institutionRegion}
+      />
 
-    <div className="vm-footnote-bottom">
-      <MainButton id="vm-sms-code-button" onClick={() => verifySmsCode(authRequestId, smsCode.join(""))}
-        disabled={!smsCodeValid} text="Continue" loading={sendingSmsCode} />
+      <div className="vm-footnote-bottom">
+        <MainButton id="vm-sms-code-button" onClick={() => verifySmsCode(authRequestId, smsCode.join(""), hideBetaBanks, institutionRegion)}
+          disabled={!smsCodeValid} text="Continue" loading={sendingSmsCode} />
+      </div>
     </div>
-  </div>
-);
+  );
 
 VerifyMobileNoPage.propTypes = {
   resendSmsCodeVerification: PropTypes.func,
