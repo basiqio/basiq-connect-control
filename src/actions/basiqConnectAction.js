@@ -239,6 +239,14 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
     if (!response.ok) {
         dispatch(bankConnectFailed(response.errors[0]));
         return;
+    } else {
+        const connection = new CustomEvent("jobCreated", {
+            detail: {
+                id: response.payload.id,
+                link: response.payload.links.self
+            }
+        });
+        window.dispatchEvent(connection)
     }
 
     const abortController = apiService.addJobStatusChangedCallback(response.payload.id, getState, (status) => {
