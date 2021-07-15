@@ -239,7 +239,15 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
   if (!response.ok) {
     dispatch(bankConnectFailed(response.errors[0]));
     return;
-  }
+  } else {
+      const newJobEvent = new CustomEvent("jobCreated", {
+        detail: {
+            id: response.payload.id,
+            link: response.payload.links.self
+        }
+      });
+      window.dispatchEvent(newJobEvent)
+  } 
 
   const abortController = apiService.addJobStatusChangedCallback(response.payload.id, getState, (status) => {
     const verifyCredentialsStep = status.stepsStatus.find((stepStatus) => stepStatus.title === 'verify-credentials');
