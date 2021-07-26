@@ -1,124 +1,91 @@
-Basiq Connect Control is an UI control for web which allows applicants to securely connect to their banks so lenders can generate an affordability report. It is written in React but exposes interface in plain JavaScript.
+The Basiq Connect Control is a UI component allows applicants to securely connect their bank accounts. It's written in React, however it exposes a vanilla JavaScript interface to ensure it can be used across all frameworks.
 
-## Requirements
+## Setup
 
-1. Install `react` and `react-dom`; ensure that react and react-dom are at least v16.9.0. You need to install these libraries even if you do **not** develop your web application using React (for example if you build an Angular app). 
+Regardless of the JS framework you are using (eg Angular, VueJS), you will still need to install `react` and `react-dom`.
 
-	```
-	$ npm install react
-	$ npm install react-dom
-	```
+Install `basiq-connect-control` and it's dependencies:
 
-2. Optionally, install (and import) polyfill libraries (in particualar if you want your app to be supported in Internet Explorer) for example, `core-js` and `react-app-polyfill`:
+```
+$ npm install react  
+$ npm install react-dom
 
- 	```
-	$ npm install react-app-polyfill
-	$ npm install core-js
-	```
-	
-	and make proper imports on the top of your entry file, for example:
-	
-	```
-	import "react-app-polyfill/ie11";
-	import "core-js/stable";
-	import "regenerator-runtime/runtime";
-	```
+$ npm install @basiq/basiq-connect-control
+```
+OPTIONAL:
 
-	If you use Angular, have in mind that Angular app comes with `zone.js` polyfill; if you want to add any other polyfills you need to add 	them **before** `zone.js` is imported. For more information, view Angular documentation.
-	
-3. Install `basiq-connect-control`:
+If you are concerned about support for Internet Explorer, you may also install polyfill libraries along side such as `core-js` and `react-app-polyfill`.
 
-	```
-	$ npm install @basiq/basiq-connect-control
-	```
-	
-	and import it where you need it:
-	
-	```
-	import BasiqConnect from "@basiq/basiq-connect-control"
-	```
-	
 ## Usage
 
-Basiq Connect Control exports single function (which we call BasiqConnect) which receives configuration as an input parameter. Once application calls the function, Basiq Connect Control is rendered in DOM object whose id is provided in input configuration.
+The package exports a single function, `BasiqConnect`, which takes a config object as a single input parameter. Calling this function will render the bank picker to the use
+
+### Where to call `BasiqConnect()`
+
+If you’re using vanilla JavaScript, you can call BasiqConnect anywhere after the host DOM element is loaded. 
+
+If you are using React, you should call it either in `componentDidMount`, or, if you are using React Hooks, in `useEffect`.
+
+```
+import BasiqConnect from "@basiq/basiq-connect-control"
+
+export const BasiqConnectModal (() => {
+
+  useEffect(() => {
+
+          BasiqConnect(config)
+
+      }, [])
+      
+      return <div id="basiq-control"></div>
+})
+
+```
 
 ### Configuration
 
-Configuration object contains following parameters (note that not all parameters are required):
+The following parameters can be passed through the config object. Most are optional values however authentication params are required and can be provided by sending either:
 
-* containerId
-  - ID of the DOM element in which Basiq Connect Control will be rendered; optimal size of host element is 440px x 480px; if bigger than recommended, container should have display set to flex;
-  - Type: String
-* token
-  - Authentication token; it is obtaining through [BasiqAPI](https://api.basiq.io/reference)
-  - Type: String
-* userID
-  - User ID of the applicant; it is obtaining through [BasiqAPI](https://api.basiq.io/reference)
-  - Type: String
-* connectLinkId
-  - ID part of Basiq Connect link; it is obtained through [Basiq Dashboard](https://dashboard.basiq.io/)
-  - Type: String
-  - Example: If connect link is https://connect.basiq.io/0272b5c7-b19a-4d93-908d-18c44ferffwd7a - ID part of connect link is 0272b5c7-b19a-4d93-908d-18c44ferffwd7a
-* upload
-  - True if uploading statements should be enabled
-  - Type: Boolean
-* connect
-  - True if connecting to bank with credentials should be enabled
-  - Type: Boolean 
-* companyName
-  - Name of the company (bank) to be shown in the control; if not provided companyName defaults to name configured on [Basiq Dashboard](https://dashboard.basiq.io/)
-  - Type: String
-* regionOfInstitutions
-  - Only institutions from this region will be shown. Valid values: Australia, New Zealand.
-  - Type: String
-* hideTestBanks
-  - True if test banks (Basiq and Hooli) should be hidden in list of all banks you can connect to
-  - Type: Boolean
-* hideBetaBanks
-  - True if beta banks (banks for which affordability report is currently not supported) should be hidden in list of all banks you can connect to
-  - Type: Boolean
+- the `userId` and `token`, which can be obtained via the [BasiqAPI](https://api.basiq.io/reference) (see the quick start guide); or
 
-### Authentication
+- the connectLinkId, which is the link returned from `/users/{user.id}/auth_link`
 
-Basiq Connect Control requires authentication. Authentication is done by providing either (1) ID part of Basiq Connect link, or (2) both access token and user id of applicant. Connect link can be obtained from [Basiq Dashboard](https://dashboard.basiq.io/); authentication token and user id can be obtained from [BasiqAPI](https://api.basiq.io/reference). If you provide ID part of Basiq Connect link you will have to go through sms verification.
+```
+{
+    containerId: String, // ID of the DOM element to which Basiq Connect Control will be rendered; 
 
-### Where to call `BasiqConnect`?
+    token: String, // CLIENT_ACCESS scope 
+    userId: String, 
+    // or
+    connectLinkId: String, 
 
-If your application is vanilla JavaScript, you can call `BasiqConnect` anywhere after host DOM element is loaded. If you use React to build you application, good place for calling `BasiqConnect` is in `componentDidMount` function; if you use Angular, good place would be in `ngOnInit` function.
+    // optional fields
+    upload: Boolean, // should uploading statements be enabled
+    connect: Boolean, // should connecting to bank with credentials be enabled
+    companyName: String, // company name to be shown, will default to Basiq Dashboard name 
+    regionOfInstitutions: String, // valid values: Australia, New Zealand
+    hideTestBanks: Boolean, // should test banks (Basiq, Hooli) be hidden from user
+    hideBetaBanks: Boolean // should beta banks be hidden from user
+}
+```
 
-### Examples
+## Handling Jobs
+You can listen and react to events emitted by the web app by using the addListener(event, cb) method. Multiple listeners per event are supported. The event you should listen for is `jobCreated`, which is triggered when a user links their financial institution using the UI, which kicks off an async job in the background.
 
-- Calling Basiq Connect with provided token and userID:
+This event will pass you the jobId which you can use to poll the `jobs/{jobId}` endpoint to check the status of each step. This allows you to:  
 
-	```
-	import BasiqConnect from "@basiq/basiq-connect-control";
-	
-	BasiqConnect({
-	    containerId: DOM_CONTAINER_ID,
-	    token: YOUR_TOKEN,
-	    userID: YOUR_USER_ID,
-	    upload: TRUE/FALSE,
-	    connect: TRUE/FALSE,
-	    companyName: YOUR_COMPANY_NAME,
-	    regionOfInstitutions: YOUR_REGION,
-	    hideTestBanks: TRUE/FALSE,
-	    hideBetaBanks: TRUE/FALSE
-	});
-	```
+- Perform actions as soon as the step you rely on is complete without waiting for the following steps,
 
-- Calling Basiq Connect with provided connect link:
+- Allow your user to carry on with their flow, keeping them engaged, and
 
-	```
-	import BasiqConnect from "@basiq/basiq-connect-control";
-	
-	BasiqConnect({
-	    containerId: DOM_CONTAINER_ID,
-	    connectLinkId: YOUR_CONNECT_LINK,
-	    upload: TRUE/FALSE,
-	    connect: TRUE/FALSE,
-	    companyName: YOUR_COMPANY_NAME,
-	    regionOfInstitutions: YOUR_REGION,
-	    hideTestBanks: TRUE/FALSE,
-	    hideBetaBanks: TRUE/FALSE
-	});
-	```
+- **Effectively manage any failed jobs, which is crucial to your application.** See the best practices for managing failed jobs
+
+
+```
+const handleNewJob = async (event) => {
+  let jobId = await event.detail.id;
+  pollJob(jobId)
+}
+
+window.addEventListener("jobCreated", handleNewJob);
+```
