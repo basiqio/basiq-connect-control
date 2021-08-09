@@ -240,14 +240,14 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
     dispatch(bankConnectFailed(response.errors[0]));
     return;
   } else {
-      const newJobEvent = new CustomEvent("jobCreated", {
-        detail: {
-            id: response.payload.id,
-            link: response.payload.links.self
-        }
-      });
-      window.dispatchEvent(newJobEvent)
-  } 
+    const newJobEvent = new CustomEvent("jobCreated", {
+      detail: {
+        id: response.payload.id,
+        link: response.payload.links.self
+      }
+    });
+    window.dispatchEvent(newJobEvent)
+  }
 
   const abortController = apiService.addJobStatusChangedCallback(response.payload.id, getState, (status) => {
     const verifyCredentialsStep = status.stepsStatus.find((stepStatus) => stepStatus.title === 'verify-credentials');
@@ -438,7 +438,7 @@ export const validateToken = ({
           hideBetaBanks: hideBetaBanksValue
         })
       );
-      dispatch(fetchInstitutions(hideBetaBanks, institutionRegionValue));
+      dispatch(fetchInstitutions(hideBetaBanks, institutionRegionValue, parsedJwt.version));
     } else {
       // eslint-disable-next-line no-console
       console.error('BASIC CONNECT CONTROL ERROR: Provided token and user id are not valid.');
