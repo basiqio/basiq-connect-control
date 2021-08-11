@@ -252,18 +252,6 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
   const abortController = apiService.addJobStatusChangedCallback(response.payload.id, getState, (status) => {
     const verifyCredentialsStep = status.stepsStatus.find((stepStatus) => stepStatus.title === 'verify-credentials');
     const mfaChallengeStep = status.stepsStatus.find((stepStatus) => stepStatus.title === 'mfa-challenge');
-    if (mfaChallengeStep) {
-      if (mfaChallengeStep.status === 'skipped' || mfaChallengeStep.status === 'success') {
-        abortController.abort();
-        dispatch(bankConnectSucceded());
-        return;
-      } else if (mfaChallengeStep.status === 'in-progress' && !status.mfaRequestSent) {
-        dispatch(mfaRequired(mfaChallengeStep.result));
-      } else if ((mfaChallengeStep.status === 'in-progress' && status.mfaRequestSent) || mfaChallengeStep.status === 'failed') {
-        dispatch(mfaFailed());
-        dispatch(navigateToActionCreator(pages.MfaPage));
-      }
-    }
     if (verifyCredentialsStep && verifyCredentialsStep.status === 'failed') {
       abortController.abort();
       if (verifyCredentialsStep.result.code === 'account-not-accessible-requires-user-action') {
@@ -282,6 +270,18 @@ export const connectToBank = (selectedInstitution, institutionId, loginId, passw
       dispatch(bankConnectSucceded());
       dispatch(navigateToActionCreator(pages.ConnectResultPage));
       return;
+    }
+    if (mfaChallengeStep) {
+      if (mfaChallengeStep.status === 'skipped' || mfaChallengeStep.status === 'success') {
+        abortController.abort();
+        dispatch(bankConnectSucceded());
+        return;
+      } else if (mfaChallengeStep.status === 'in-progress' && !status.mfaRequestSent) {
+        dispatch(mfaRequired(mfaChallengeStep.result));
+      } else if ((mfaChallengeStep.status === 'in-progress' && status.mfaRequestSent) || mfaChallengeStep.status === 'failed') {
+        dispatch(mfaFailed());
+        dispatch(navigateToActionCreator(pages.MfaPage));
+      }
     }
   });
 };
