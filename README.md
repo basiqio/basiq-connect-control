@@ -55,7 +55,7 @@ The following parameters can be passed through the config object. Most are optio
     containerId: String, // ID of the DOM element to which Basiq Connect Control will be rendered; 
 
     token: String, // CLIENT_ACCESS scope 
-    userId: String, 
+    userID: String, 
     // or
     connectLinkId: String, 
 
