@@ -26,7 +26,7 @@ If you’re using vanilla JavaScript, you can call BasiqConnect anywhere after t
 
 If you are using React, you should call it either in `componentDidMount`, or, if you are using React Hooks, in `useEffect`.
 
-```
+```javascript
 import BasiqConnect from "@basiq/basiq-connect-control"
 
 export const BasiqConnectModal (() => {
@@ -50,7 +50,7 @@ The following parameters can be passed through the config object. Most are optio
 
 - the connectLinkId, which is the link returned from `/users/{user.id}/auth_link`
 
-```
+```json
 {
     containerId: String, // ID of the DOM element to which Basiq Connect Control will be rendered; 
 
@@ -81,11 +81,19 @@ This event will pass you the jobId which you can use to poll the `jobs/{jobId}` 
 - **Effectively manage any failed jobs, which is crucial to your application.** See the best practices for managing failed jobs
 
 
-```
+```javascript
 const handleNewJob = async (event) => {
   let jobId = await event.detail.id;
   pollJob(jobId)
 }
 
 window.addEventListener("jobCreated", handleNewJob);
+```
+
+## Other events
+
+The BasiqConnect package also provides a `basiqConnectMounted` event, which is triggered when the component has rendered. This allows for any handling of loading state to be managed in your UI. This can be done as below: 
+
+```javascript
+window.addEventListener("basiqConnectMounted", callback);
 ```

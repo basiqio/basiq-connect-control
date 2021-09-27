@@ -16,11 +16,6 @@ ElementQueries.listen();
 ElementQueries.init();
 
 const BasiqConnect = (inputs) => {
-
-  useEffect(() => {
-    window.dispatchEvent(new CustomEvent("basiqConnectMounted"));
-  }, [])
-
   if(inputs && inputs.containerId !== null){
     const { containerId, connectLinkId, token, userID, connect, upload, companyName, regionOfInstitutions, hideTestBanks, hideBetaBanks } = inputs;
     ReactDOM.render(
