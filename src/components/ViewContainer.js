@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import ImagePreloader from "./ui/ImagePreloader";
@@ -10,6 +10,11 @@ import greenWarning from "../assets/images/greenWarning.svg";
 import "./ViewContainer.css";
 
 const ViewContainer = ({ children, error, resendMessage, currentPage }) => {
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("basiqConnectMounted"));
+    }, [])
+
   return (
     <div className="vc-outer-container">
       <div className="vc-container vc-container-size">

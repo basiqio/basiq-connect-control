@@ -25,7 +25,6 @@ class App extends React.Component {
       console.error("BASIQ CONNECT CONTROL ERROR: You have to provide authentication id or user id and access token.");
       this.props.authorizationFailed();
     }
-    window.dispatchEvent(new CustomEvent("basiqConnectMounted"));
   }
 
   render() {
