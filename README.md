@@ -50,7 +50,7 @@ The following parameters can be passed through the config object. Most are optio
 
 - the connectLinkId, which is the link returned from `/users/{user.id}/auth_link`
 
-```json
+```
 {
     containerId: String, // ID of the DOM element to which Basiq Connect Control will be rendered; 
 
