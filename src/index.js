@@ -9,9 +9,6 @@ import App from "./App";
 
 import "./styles/Layout.css";
 
-// eslint-disable-next-line no-console
-console.log("Basiq Connect Control v1.0.18");
-
 ElementQueries.listen();
 ElementQueries.init();
 
