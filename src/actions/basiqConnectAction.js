@@ -239,7 +239,7 @@ export const connectToBank =
 					} else {
 						dispatch(verifyCredentialsFailed(verifyCredentialsStep.result.detail));
 					}
-				} else if (verifyCredentialsStep.status === 'success') {
+				} else if (verifyCredentialsStep.status === 'success' && !mfaChallengeStep) {
 					abortController.abort();
 					dispatch(bankConnectSucceded());
 					dispatch(navigateToActionCreator(pages.ConnectResultPage));
