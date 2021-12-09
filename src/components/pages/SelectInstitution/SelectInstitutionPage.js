@@ -11,8 +11,6 @@ import InstitutionTumbnail from "../../ui/InstitutionThumbnail/InstitutionThumbn
 
 import "./SelectInstitutionPage.css";
 
-const ESUPERFUND_PARTNER_ID = "8f6d03ae-e2ca-4bc9-950d-53f20b30ba73";
-
 class SelectInstitutionPage extends React.Component {
   constructor() {
     super();
@@ -60,8 +58,7 @@ class SelectInstitutionPage extends React.Component {
             ? institutions
               .filter(
                 institution =>
-                  // Removing test institutions if partner is eSuperfund
-                  (this.getPartnerId(accessToken) === ESUPERFUND_PARTNER_ID || hideTestBanks ?
+                  (hideTestBanks ?
                     (institution.id !== "AU00000" && institution.id !== "AU00001") : true) &&
                   (institution.shortName.toUpperCase().includes(this.state.searchString) ||
                   institution.name.toUpperCase().includes(this.state.searchString))
