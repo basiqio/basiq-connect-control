@@ -95,24 +95,25 @@ export async function getUser(token, id) {
 
 export async function getInstitutions(hideBetaBanks, institutionRegion, tokenVersion) {
   let authorisationFilter = "";
+  const openBankingFilter = "institution.openBankingSource.eq('web')";
   if (tokenVersion === "2.1") {
     authorisationFilter = "institution.authorization.in('user', 'user-mfa', 'user-mfa-intermittent')";
   }
   else authorisationFilter = "institution.authorization.eq('user')";
   if (hideBetaBanks && institutionRegion) {
     return await doGet(
-      `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}'),${authorisationFilter}`
+      `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),institution.country.eq('${institutionRegion}'),${authorisationFilter},${openBankingFilter}`
     );
   } else if (institutionRegion) {
     return await doGet(
-      `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.country.eq('${institutionRegion}'),${authorisationFilter}`
+      `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.country.eq('${institutionRegion}'),${authorisationFilter},${openBankingFilter}`
     );
   } else if (hideBetaBanks) {
     return await doGet(
-      `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),${authorisationFilter}`
+      `${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),institution.connectorStatus.eq('active'),${authorisationFilter},${openBankingFilter}`
     );
   }
-  return await doGet(`${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),${authorisationFilter}`);
+  return await doGet(`${API_URL}/public/institutions?filter=institution.stage.ne('alpha'),${authorisationFilter},${openBankingFilter}`);
 }
 
 export async function createConnection(institutionId, loginId, password, securityCode, secondaryLoginId) {
