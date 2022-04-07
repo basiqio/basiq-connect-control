@@ -1,0 +1,1 @@
+declare module "@basiq/basiq-connect-control";
