@@ -1,3 +1,7 @@
+# THIS UI CONTROL IS DEPRECATED!!
+## Please refer to the new UI Control https://www.npmjs.com/package/@basiq/connect-auth
+## Read more here: https://api.basiq.io/changelog/june23-deprecation-of-basiq-connect-control-ui
+
 The Basiq Connect Control is a UI component allows applicants to securely connect their bank accounts. It's written in React, however it exposes a vanilla JavaScript interface to ensure it can be used across all frameworks.
 
 ## Setup
